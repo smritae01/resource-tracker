@@ -21,10 +21,8 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <h2>Home</h2>
-
         <h3>Sitemap</h3>
-                    
+
         <div>
           <Link to="/students">Link to studentList</Link>
         </div>
@@ -35,10 +33,10 @@ class Home extends Component {
           <Link to="/courses">Link to courseList</Link>
         </div>
         <div>
-          <Link to="/exams">Link to examList</Link>
+          <Link to="/exams">Requests</Link>
         </div>
-        
-            
+
+
       </div>
     );
   }
@@ -46,7 +44,7 @@ class Home extends Component {
 
 // Store actions
 const mapDispatchToProps = function(dispatch) {
-  return { 
+  return {
     actionsUser: bindActionCreators(UserActions, dispatch)
   };
 };

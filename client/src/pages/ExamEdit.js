@@ -20,44 +20,11 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 // Custom Actions
 
-
 // START IMPORT ACTIONS
 import ExamActions from "../redux/actions/ExamActions";
 import StudentActions from "../redux/actions/StudentActions";
 import CourseActions from "../redux/actions/CourseActions";
 import TeacherActions from "../redux/actions/TeacherActions";
-
-// END IMPORT ACTIONS
-
-/** APIs
-
-* actionsExam.create
-*	@description CRUD ACTION create
-*
-* actionsExam.update
-*	@description CRUD ACTION update
-*	@param ObjectId id - Id
-*
-* actionsExam.get
-*	@description CRUD ACTION get
-*	@param ObjectId id - Id resource
-*
-* actionsStudent.list
-*	@description CRUD ACTION list
-*
-* actionsCourse.list
-*	@description CRUD ACTION list
-*
-* actionsTeacher.list
-*	@description CRUD ACTION list
-*
-* actionsExam.validate
-*	@description this api is used to validate exam
-*	@param String id - id for exam
-*	@returns Boolean
-*
-
-**/
 
 class ExamEdit extends Component {
   // Init exam
@@ -73,7 +40,7 @@ class ExamEdit extends Component {
     if (this.props.match.params.id !== "new") {
       this.props.actionsExam.loadExam(this.props.match.params.id);
     }
-    
+
     this.props.actionsCourse.loadCourseList();
     this.props.actionsStudent.loadStudentList();
     this.props.actionsTeacher.loadTeacherList();
@@ -104,31 +71,31 @@ class ExamEdit extends Component {
   render() {
     return (
       <div>
-        <h1>Exam Edit</h1>
+        <h1>Make Repair Request</h1>
         <form className="myForm" onSubmit={this.save.bind(this)}>
 
-          
+
           <TextField
-            id="place"
-            label="Place"
+            id="desc"
+            label="Describe the request"
             value={this.state.exam.place || ""}
             onChange={Utils.handleChange.bind(this, "exam")}
             margin="normal"
             fullWidth
           />
-          
-          
+
+
           <TextField
-            id="score"
-            label="Score"
+            id="date"
+            label="Date"
             value={this.state.exam.score || ""}
             onChange={Utils.handleChange.bind(this, "exam")}
             type="number"
             margin="normal"
             fullWidth
           />
-          
-          <FormControlLabel
+
+          {/* <FormControlLabel
             control={
               <Switch
                 id="valid"
@@ -139,18 +106,15 @@ class ExamEdit extends Component {
             }
             label="valid"
             className="mt-20"
-          />
-          
-          {/* RELATIONS */}
+          /> */}
 
-          <h2 className="mb-20">Relations</h2>
-          
+          {/* RELATIONS */}
+{/*
+          <h2 className="mb-20">Relations</h2> */}
+
           {/* Relation 1:m _course with course */}
-          
           <FormControl fullWidth className="mb-20">
-            <InputLabel shrink htmlFor="_course">
-              _course
-            </InputLabel>
+            <InputLabel shrink htmlFor="_course"> Select Item </InputLabel>
             <Select
               value={this.state.exam._course || ""}
               onChange={Utils.handleChangeSelect.bind(this, "exam")}
@@ -170,11 +134,11 @@ class ExamEdit extends Component {
               ))}
             </Select>
           </FormControl>
-          
-          
+
+
           {/* Relation 1:m _student with student */}
-          
-          <FormControl fullWidth className="mb-20">
+
+          {/* <FormControl fullWidth className="mb-20">
             <InputLabel shrink htmlFor="_student">
               _student
             </InputLabel>
@@ -196,11 +160,11 @@ class ExamEdit extends Component {
                 </MenuItem>
               ))}
             </Select>
-          </FormControl>
-          
-          
+          </FormControl> */}
+
+
           {/* Relation 1:m _teacher with teacher */}
-          
+{/*
           <FormControl fullWidth className="mb-20">
             <InputLabel shrink htmlFor="_teacher">
               _teacher
@@ -223,9 +187,9 @@ class ExamEdit extends Component {
                 </MenuItem>
               ))}
             </Select>
-          </FormControl>
-          
-          
+          </FormControl> */}
+
+
           {/* Footer */}
           <div className="footer-card">
             <Link to="/exams/">Back to list</Link>
@@ -242,7 +206,7 @@ class ExamEdit extends Component {
 
 // Store actions
 const mapDispatchToProps = function(dispatch) {
-  return { 
+  return {
     actionsExam: bindActionCreators(ExamActions, dispatch),
     actionsStudent: bindActionCreators(StudentActions, dispatch),
     actionsCourse: bindActionCreators(CourseActions, dispatch),
@@ -251,7 +215,7 @@ const mapDispatchToProps = function(dispatch) {
 };
 
 // Validate types
-ExamEdit.propTypes = { 
+ExamEdit.propTypes = {
   actionsExam: PropTypes.object.isRequired,
   actionsStudent: PropTypes.object.isRequired,
   actionsCourse: PropTypes.object.isRequired,

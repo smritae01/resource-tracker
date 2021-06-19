@@ -1,5 +1,5 @@
 
- 
+
 // Dependencies
 import axios from "axios";
 import { properties } from "../../config/properties";
@@ -94,6 +94,7 @@ class TeacherApiGenerated {
   *   @param ObjectId id Id
   *
   */
+
   static saveTeacher(teacher) {
     return axios.post(TeacherApiGenerated.contextUrl + "/" + teacher._id, teacher )
       .then(response => {

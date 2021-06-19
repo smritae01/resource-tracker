@@ -72,28 +72,28 @@ class ExamList extends Component {
 
   // Show content
   render() {
-    const columns = [ 
+    const columns = [
       {
-        id: "place",
+        id: "req no.",
         type: "string",
-        label: "Place"
-      }, 
+        label: "Request No."
+      },
       {
-        id: "score",
-        type: "number",
-        label: "Score"
-      }, 
+        id: "date",
+        type: "date",
+        label: "Date"
+      },
       {
-        id: "valid",
-        type: "boolean",
-        label: "Valid"
+        id: "desc",
+        type: "string",
+        label: "Description"
       },
     ];
     const link = "/exams/";
 
     return (
       <div>
-        <h1>Exam List</h1>
+        <h1>Requests</h1>
 
         <EnhancedTable
           data={this.props.list}
@@ -108,40 +108,22 @@ class ExamList extends Component {
           onConfirm={this.confirmDialogDelete.bind(this)}
         />
 
-        {/*
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell align="right">Place</TableCell>
-              <TableCell align="right">Score</TableCell>
-              <TableCell align="right">Valid</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {this.props.list.map(row => (
-              <TableRow key={row._id}>
-                <TableCell component="th" scope="row">
-                  <Link to={"/exams/" + row._id} key={row._id}>
-                    {row._id}
-                  </Link>
-                </TableCell>
-                <TableCell align="right">{ row.place }</TableCell>
-                <TableCell align="right">{ row.score }</TableCell>
-                <TableCell align="right">{ row.valid }</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-        */}
+        <div className="footer-card">
+          <Link to="/exams/new">
+            <Button variant="contained" color="primary">
+              Make Repair Request
+            </Button>
+          </Link>
+        </div>
 
         <div className="footer-card">
           <Link to="/exams/new">
             <Button variant="contained" color="primary">
-              Add
+              Make Resource Request
             </Button>
           </Link>
         </div>
+
       </div>
     );
   }
@@ -149,13 +131,13 @@ class ExamList extends Component {
 
 // Store actions
 const mapDispatchToProps = function(dispatch) {
-  return { 
+  return {
     actionsExam: bindActionCreators(ExamActions, dispatch),
   };
 };
 
 // Validate types
-ExamList.propTypes = { 
+ExamList.propTypes = {
   actionsExam: PropTypes.object.isRequired,
 };
 

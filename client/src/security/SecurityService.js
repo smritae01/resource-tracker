@@ -12,6 +12,7 @@ export default class SecurityService {
       );
 
       if (user && user.token) {
+        console.log(user.token);
         axios.defaults.headers.common["authorization"] = `Bearer ${user.token}`;
       } else {
         delete axios.defaults.headers.common["authorization"];
@@ -33,10 +34,7 @@ export default class SecurityService {
     SecurityService.setAuthorization();
   }
 
-  /**
-   * Get logged user
-   */
-  static getUser() {
+  static getUser() { // Gets details of user
     try {
       const user = JSON.parse(
         localStorage.getItem("user") || sessionStorage.getItem("user")

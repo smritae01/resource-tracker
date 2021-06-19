@@ -85,13 +85,13 @@ class Navbar extends React.Component {
     const sideList = (
       <div className={classes.list}>
         <div className="navbar-drawer-header">
-          
-          <div className="navbar-drawer-text">test</div>
+
+          <div className="navbar-drawer-text">Quick Links</div>
         </div>
         <Divider />
         <List>
           {/* START LINK MENU */}
-            
+
            <Link to="/courses">
             <ListItem button key="course">
               <ListItemIcon>
@@ -99,7 +99,7 @@ class Navbar extends React.Component {
               </ListItemIcon>
               <ListItemText className="menu-text" primary="course" />
             </ListItem>
-          </Link>{" "}            
+          </Link>{" "}
            <Link to="/exams">
             <ListItem button key="exam">
               <ListItemIcon>
@@ -107,7 +107,7 @@ class Navbar extends React.Component {
               </ListItemIcon>
               <ListItemText className="menu-text" primary="exam" />
             </ListItem>
-          </Link>{" "}            
+          </Link>{" "}
            <Link to="/students">
             <ListItem button key="student">
               <ListItemIcon>
@@ -115,7 +115,7 @@ class Navbar extends React.Component {
               </ListItemIcon>
               <ListItemText className="menu-text" primary="student" />
             </ListItem>
-          </Link>{" "}            
+          </Link>{" "}
            <Link to="/teachers">
             <ListItem button key="teacher">
               <ListItemIcon>
@@ -160,7 +160,7 @@ class Navbar extends React.Component {
             )}
             <Typography variant="h6" color="inherit" className={classes.grow}>
               <Link to="/home" className="white">
-                test
+                DASHBOARD
               </Link>
             </Typography>
             {this.props.user && (

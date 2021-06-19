@@ -24,7 +24,7 @@ const generatedModel = {
         type: "String"
       },
       password: {
-        type: "String", 
+        type: "String",
         required: true
       },
       roles: [{
@@ -34,12 +34,12 @@ const generatedModel = {
         type: "String"
       },
       username: {
-        type: "String", 
+        type: "String",
         required: true
       },
       // RELATIONS
-      
-      
+
+
       // EXTERNAL RELATIONS
       /*
       */
@@ -66,11 +66,11 @@ const generatedModel = {
   },
 
   // Start queries
-    
+
 
   // CRUD METHODS
 
-  
+
   /**
   * UserModel.create
   *   @description CRUD ACTION create
@@ -80,7 +80,7 @@ const generatedModel = {
     const obj = new generatedModel.model(item);
     return await obj.save();
   },
-  
+
   /**
   * UserModel.delete
   *   @description CRUD ACTION delete
@@ -90,7 +90,7 @@ const generatedModel = {
   async delete(id) {
     return await generatedModel.model.findByIdAndRemove(id);
   },
-  
+
   /**
   * UserModel.get
   *   @description CRUD ACTION get
@@ -100,7 +100,7 @@ const generatedModel = {
   async get(id) {
     return await generatedModel.model.findOne({ _id : id }).select("-password");
   },
-  
+
   /**
   * UserModel.list
   *   @description CRUD ACTION list
@@ -109,19 +109,19 @@ const generatedModel = {
   async list() {
     return await generatedModel.model.find().select("-password");
   },
-  
+
   /**
   * UserModel.update
   *   @description CRUD ACTION update
   *   @param ObjectId id Id
   *
   */
-  async update(item) { 
+  async update(item) {
     delete item.password;
 
     return await generatedModel.model.findOneAndUpdate({ _id: item._id }, item, {'new': true});
   },
-  
+
 
 
 
@@ -133,14 +133,19 @@ const generatedModel = {
   getByUsernameAndPassword: async (username, password) => {
     // CUSTOMIZE THIS FUNCTION
     // if you want to change login method
-
+    console.log("Hello");
+    // console.log(generatedModel.model.);
+    console.log("HI");
     let user = await generatedModel.model
       .findOne({
         username: username,
         password: password
       })
       .lean();
-    if (user) user.password = undefined;
+    if (user) {
+      console.log(user.password)
+      user.password = undefined;
+    }
     return user;
   },
 

@@ -34,10 +34,12 @@ const securityControllers = {
       // Get parameters from post request
       let params = req.body;
       // Retrieve user
-      let user = await UserModel.getByUsernameAndPassword(
-        params.username,
-        params.password
-      );
+      console.log(params.username)
+      console.log(params.password)
+
+      let user = await UserModel.getByUsernameAndPassword(params.username,params.password);
+      console.log(user);
+
       if (user) {
         // Create token
         var token = jsonwebtoken.sign(user, Properties.tokenSecret, {

@@ -14,7 +14,6 @@ import Button from "@material-ui/core/Button";
 
 // Custom Actions
 
-
 // START IMPORT ACTIONS
 import CourseActions from "../redux/actions/CourseActions";
 import ExamActions from "../redux/actions/ExamActions";
@@ -68,7 +67,7 @@ class CourseEdit extends Component {
       this.props.actionsStudent.findBy_courses(this.props.match.params.id);
       this.props.actionsTeacher.findBy_courses(this.props.match.params.id);
     }
-    
+
   }
 
   // Insert props course in state
@@ -99,7 +98,7 @@ class CourseEdit extends Component {
         <h1>Course Edit</h1>
         <form className="myForm" onSubmit={this.save.bind(this)}>
 
-          
+
           <TextField
             id="name"
             label="Name"
@@ -112,15 +111,15 @@ class CourseEdit extends Component {
               ? { error: true }
               : {})}
           />
-          
+
           {/* RELATIONS */}
 
           {/* EXTERNAL RELATIONS */}
-          
+
           {/* External relation with exam */}
-          
+
           <h3>Exam</h3>
-          {(!this.props.listExam || this.props.listExam.length === 0) && 
+          {(!this.props.listExam || this.props.listExam.length === 0) &&
             <div>No Exam associated</div>
           }
           {this.props.listExam &&
@@ -132,11 +131,11 @@ class CourseEdit extends Component {
               );
             })}
 
-          
+
           {/* External relation with student */}
-          
+
           <h3>Student</h3>
-          {(!this.props.listStudent || this.props.listStudent.length === 0) && 
+          {(!this.props.listStudent || this.props.listStudent.length === 0) &&
             <div>No Student associated</div>
           }
           {this.props.listStudent &&
@@ -148,11 +147,11 @@ class CourseEdit extends Component {
               );
             })}
 
-          
+
           {/* External relation with teacher */}
-          
+
           <h3>Teacher</h3>
-          {(!this.props.listTeacher || this.props.listTeacher.length === 0) && 
+          {(!this.props.listTeacher || this.props.listTeacher.length === 0) &&
             <div>No Teacher associated</div>
           }
           {this.props.listTeacher &&
@@ -164,7 +163,7 @@ class CourseEdit extends Component {
               );
             })}
 
-          
+
           {/* Footer */}
           <div className="footer-card">
             <Link to="/courses/">Back to list</Link>
@@ -181,7 +180,7 @@ class CourseEdit extends Component {
 
 // Store actions
 const mapDispatchToProps = function(dispatch) {
-  return { 
+  return {
     actionsCourse: bindActionCreators(CourseActions, dispatch),
     actionsExam: bindActionCreators(ExamActions, dispatch),
     actionsTeacher: bindActionCreators(TeacherActions, dispatch),
@@ -190,7 +189,7 @@ const mapDispatchToProps = function(dispatch) {
 };
 
 // Validate types
-CourseEdit.propTypes = { 
+CourseEdit.propTypes = {
   actionsCourse: PropTypes.object.isRequired,
   actionsExam: PropTypes.object.isRequired,
   actionsTeacher: PropTypes.object.isRequired,
