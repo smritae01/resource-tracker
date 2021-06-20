@@ -66,7 +66,7 @@ class TeacherEdit extends Component {
       this.props.actionsTeacher.loadTeacher(this.props.match.params.id);
       this.props.actionsExam.findBy_teacher(this.props.match.params.id);
     }
-    
+
     this.props.actionsCourse.loadCourseList();
   }
 
@@ -77,6 +77,9 @@ class TeacherEdit extends Component {
     });
   }
 
+
+// ------------------------------ //
+// ------------------------------ //
   // Save data
   save(event) {
     event.preventDefault();
@@ -90,55 +93,30 @@ class TeacherEdit extends Component {
       });
     }
   }
-
+// ------------------------------ //
+// ------------------------------ //
   // Show content
   render() {
     return (
       <div>
-        <h1>Teacher Edit</h1>
+        <h1>Check Status</h1>
         <form className="myForm" onSubmit={this.save.bind(this)}>
 
-          
-          <TextField
-            id="lastname"
-            label="Lastname"
-            value={this.state.teacher.lastname || ""}
-            onChange={Utils.handleChange.bind(this, "teacher")}
-            margin="normal"
-            fullWidth
-            required
-            {...(!this.state.teacher.lastname && this.state.teacher.lastname === ""
-              ? { error: true }
-              : {})}
-          />
-          
-          
-          <TextField
-            id="name"
-            label="Name"
-            value={this.state.teacher.name || ""}
-            onChange={Utils.handleChange.bind(this, "teacher")}
-            margin="normal"
-            fullWidth
-            required
-            {...(!this.state.teacher.name && this.state.teacher.name === ""
-              ? { error: true }
-              : {})}
-          />
-          
+
+
           {/* RELATIONS */}
 
-          <h2 className="mb-20">Relations</h2>
-          
-          {/* Relation m:m _courses with course */}
-          
+          <h2 className="mb-20">Search from the list</h2>
+
+          {/* Relation m:m resources with course */}
+
           <FormControl fullWidth className="mb-20">
-            <InputLabel htmlFor="_courses">_courses</InputLabel>
+            <InputLabel htmlFor="resources">resources</InputLabel>
             <Select
               multiple
-              value={this.state.teacher._courses || []}
+              value={this.state.teacher.resources || []}
               onChange={Utils.handleChangeSelect.bind(this, "teacher")}
-              input={<Input id="_courses" name="_courses" />}
+              input={<Input id="resources" name="resources" />}
               renderValue={selected => (
                 <div>
                   {selected.map(value => (
@@ -153,8 +131,8 @@ class TeacherEdit extends Component {
                   value={item._id}
                   style={{
                     fontWeight:
-                      this.state.teacher._courses &&
-                      this.state.teacher._courses.indexOf(item._id) === -1
+                      this.state.teacher.resources &&
+                      this.state.teacher.resources.indexOf(item._id) === -1
                         ? "regular"
                         : "bold"
                   }}
@@ -164,14 +142,14 @@ class TeacherEdit extends Component {
               ))}
             </Select>
           </FormControl>
-          
+
           {/* EXTERNAL RELATIONS */}
-          
+
           {/* External relation with exam */}
-          
-          <h3>Exam</h3>
-          {(!this.props.listExam || this.props.listExam.length === 0) && 
-            <div>No Exam associated</div>
+
+          <h3>Status</h3>
+          {(!this.props.listExam || this.props.listExam.length === 0) &&
+            <div>Nothing is selected</div>
           }
           {this.props.listExam &&
             this.props.listExam.map((item, i) => {
@@ -182,14 +160,12 @@ class TeacherEdit extends Component {
               );
             })}
 
-          
+
           {/* Footer */}
           <div className="footer-card">
             <Link to="/teachers/">Back to list</Link>
 
-            <Button type="submit" variant="contained" color="primary">
-              Save
-            </Button>
+
           </div>
         </form>
       </div>
@@ -199,7 +175,7 @@ class TeacherEdit extends Component {
 
 // Store actions
 const mapDispatchToProps = function(dispatch) {
-  return { 
+  return {
     actionsTeacher: bindActionCreators(TeacherActions, dispatch),
     actionsExam: bindActionCreators(ExamActions, dispatch),
     actionsCourse: bindActionCreators(CourseActions, dispatch),
@@ -207,7 +183,7 @@ const mapDispatchToProps = function(dispatch) {
 };
 
 // Validate types
-TeacherEdit.propTypes = { 
+TeacherEdit.propTypes = {
   actionsTeacher: PropTypes.object.isRequired,
   actionsExam: PropTypes.object.isRequired,
   actionsCourse: PropTypes.object.isRequired,

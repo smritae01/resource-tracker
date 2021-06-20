@@ -72,23 +72,23 @@ class TeacherList extends Component {
 
   // Show content
   render() {
-    const columns = [ 
+    const columns = [
       {
-        id: "lastname",
+        id: "item",
         type: "string",
-        label: "Lastname"
-      }, 
+        label: "Item"
+      },
       {
-        id: "name",
+        id: "staus",
         type: "string",
-        label: "Name"
+        label: "Status"
       },
     ];
     const link = "/teachers/";
 
     return (
       <div>
-        <h1>Teacher List</h1>
+        <h1>Status</h1>
 
         <EnhancedTable
           data={this.props.list}
@@ -131,7 +131,7 @@ class TeacherList extends Component {
         <div className="footer-card">
           <Link to="/teachers/new">
             <Button variant="contained" color="primary">
-              Add
+              Search Status
             </Button>
           </Link>
         </div>
@@ -142,13 +142,13 @@ class TeacherList extends Component {
 
 // Store actions
 const mapDispatchToProps = function(dispatch) {
-  return { 
+  return {
     actionsTeacher: bindActionCreators(TeacherActions, dispatch),
   };
 };
 
 // Validate types
-TeacherList.propTypes = { 
+TeacherList.propTypes = {
   actionsTeacher: PropTypes.object.isRequired,
 };
 
