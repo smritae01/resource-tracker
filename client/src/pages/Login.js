@@ -22,7 +22,8 @@ import SnackbarContent from "@material-ui/core/SnackbarContent";
 import ErrorIcon from "@material-ui/icons/Error";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
-
+import RadioGroup from "@material-ui/core/RadioGroup";
+import Radio from "@material-ui/core/RadioGroup";
 /** APIs
 
 **/
@@ -35,7 +36,8 @@ class Login extends Component {
       login: {
         username: "admin",
         password: "pass",
-        remember: true
+        remember: true,
+        loginfo: ""
       },
       showError: false
     };
@@ -91,7 +93,7 @@ class Login extends Component {
         </div>
         <form onSubmit={this.login.bind(this)}>
           <FormControl margin="normal" required fullWidth>
-            <InputLabel htmlFor="username">Uername</InputLabel>
+            <InputLabel htmlFor="username">Username</InputLabel>
             <Input
               id="username"
               name="username"
@@ -112,6 +114,16 @@ class Login extends Component {
               onChange={Utils.handleChange.bind(this, "login")}
             />
           </FormControl>
+
+          {/*//OPTIONS TO LOGIN AS ADMIN OR USER
+          // <FormControl margin="normal" required fullWidth>
+          //   <InputLabel htmlFor="loginas">Login as</InputLabel>
+          //   <RadioGroup aria-label="loginfo" name="loginfo" value={this.state.login.loginfo || ""} onChange={Utils.handleChange.bind(this, "login")}>
+          //     <FormControlLabel value="user" control={<Radio />} label="User" />
+          //     <FormControlLabel value="admin" control={<Radio />} label="Admin" />
+          //   </RadioGroup>
+          // </FormControl>*/}
+
           <FormControlLabel
             control={
               <Switch

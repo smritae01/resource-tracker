@@ -24,7 +24,7 @@ class Home extends Component {
         <h3>Sitemap</h3>
 
         <div>
-          <Link to="/students">Link to studentList</Link>
+          <Link to="/complaints">Check Complaints</Link>
         </div>
         <div>
           <Link to="/teachers">Link to teacherList</Link>

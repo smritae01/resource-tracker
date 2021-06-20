@@ -18,6 +18,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import Chip from "@material-ui/core/Chip";
 import Input from "@material-ui/core/Input";
+import { makeStyles } from '@material-ui/core/styles';
 
 // Custom Actions
 
@@ -67,7 +68,7 @@ class StudentEdit extends Component {
       this.props.actionsStudent.loadStudent(this.props.match.params.id);
       this.props.actionsExam.findBy_student(this.props.match.params.id);
     }
-    
+
     this.props.actionsCourse.loadCourseList();
   }
 
@@ -92,106 +93,182 @@ class StudentEdit extends Component {
     }
   }
 
+  handleChange = (event, index, value) => {
+      this.setState({ selectedValue: value });
+    };
   // Show content
   render() {
+    var catArr = [
+        {
+          value: 'dt',
+          label: "Date or Time of order",
+        },
+        {
+          value: 'ven',
+          label: "Vendor",
+        },
+        {
+          value: 'pq',
+          label: "Product quality",
+        },
+        {
+          value: 'mi',
+          label: "Missing items",
+        },
+        {
+          value: 'da',
+          label:  "Delivery & Address",
+        },
+        {
+          value: 'oth',
+          label: "Other",
+        }];
+        // const [cat, setCat] = React.useState('');
+        //
+        // const handleChange = (event) => {
+        //   setCat(event.target.value);
+        // };
     return (
       <div>
-        <h1>Student Edit</h1>
+        <h1>New Complaint</h1>
         <form className="myForm" onSubmit={this.save.bind(this)}>
 
           <DateTimePicker
-            id="DOB"
-            label="DOB"
+            id="date"
+            label="Date"
             className="mt-20 mb-20"
             ampm={false}
             value={
-              this.state.student.DOB
-                ? new Date(this.state.student.DOB)
+              this.state.student.date
+                ? new Date(this.state.student.date)
                 : null
             }
-            onChange={Utils.handleChangeDate.bind(this, "student", "DOB")}
+            onChange={Utils.handleChangeDate.bind(this, "student", "date")}
             fullWidth
             autoOk
             disableFuture
             required
-            {...(!this.state.student.DOB && this.state.student.DOB === ""
+            {...(!this.state.student.date && this.state.student.date === ""
               ? { error: true }
               : {})}
           />
-          
-          
-          <TextField
-            id="lastname"
-            label="Lastname"
-            value={this.state.student.lastname || ""}
-            onChange={Utils.handleChange.bind(this, "student")}
-            margin="normal"
-            fullWidth
-            required
-            {...(!this.state.student.lastname && this.state.student.lastname === ""
-              ? { error: true }
-              : {})}
-          />
-          
-          
-          <TextField
-            id="name"
-            label="Name"
-            value={this.state.student.name || ""}
-            onChange={Utils.handleChange.bind(this, "student")}
-            margin="normal"
-            fullWidth
-            required
-            {...(!this.state.student.name && this.state.student.name === ""
-              ? { error: true }
-              : {})}
-          />
-          
-          {/* RELATIONS */}
 
-          <h2 className="mb-20">Relations</h2>
-          
-          {/* Relation m:m _courses with course */}
-          
+
+          <TextField
+            id="Cno"
+            label="Complaint Number"
+            value={this.state.student.Cno || ""}
+            onChange={Utils.handleChange.bind(this, "student")}
+            margin="normal"
+            fullWidth
+            required
+            {...(!this.state.student.Cno && this.state.student.Cno === ""
+              ? { error: true }
+              : {})}
+          />
+
+          {/* RELATIONS
+
+          //
+          // <FormControl fullWidth className="mb-20">
+          //   <InputLabel htmlFor="category">Choose Category</InputLabel>
+          //   <Select
+          //   //   multiple
+          //   //   value={this.state.student.category || catArr}
+          //   //   onChange={Utils.handleChangeSelect.bind(this, "student")}
+          //   //   input={<Input id="category" name="Category" />}
+          //   //   renderValue={selected => (
+          //   //     <div>
+          //   //       {selected.map(value => (
+          //   //         <Chip key={value} label={value} />
+          //   //       ))}
+          //   //     </div>
+          //   //   )}
+          //   // >
+          //   //MODIFY HERE WITH CATEGORY
+          //     {catArr.map(item => (
+          //       <MenuItem
+          //         key={item}
+          //         selected={option === "Other"} onClick={handleClose}
+          //       >{item}
+          //       </MenuItem>
+          //     ))}
+          //     </Select>
+          // </FormControl>*/}
           <FormControl fullWidth className="mb-20">
-            <InputLabel htmlFor="_courses">_courses</InputLabel>
-            <Select
-              multiple
-              value={this.state.student._courses || []}
-              onChange={Utils.handleChangeSelect.bind(this, "student")}
-              input={<Input id="_courses" name="_courses" />}
-              renderValue={selected => (
-                <div>
-                  {selected.map(value => (
-                    <Chip key={value} label={value} />
-                  ))}
-                </div>
-              )}
-            >
-              {this.props.listCourse && this.props.listCourse.map(item => (
-                <MenuItem
-                  key={item._id}
-                  value={item._id}
-                  style={{
-                    fontWeight:
-                      this.state.student._courses &&
-                      this.state.student._courses.indexOf(item._id) === -1
-                        ? "regular"
-                        : "bold"
-                  }}
-                >
-                  {item._id}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          
+      <InputLabel htmlFor="category">Choose Category</InputLabel>
+        <Select
+          id="category"
+          select
+          label="Select"
+          value={this.state.student.category || ""}
+          onClick={Utils.handleChange.bind(this, "student")}
+          helperText="Please select the category"
+          >
+          {catArr.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </Select>
+        </FormControl>
+
+          <TextField
+            id="complaint"
+            label="Your Complaint"
+            value={this.state.student.complaint || ""}
+            onChange={Utils.handleChange.bind(this, "student")}
+            margin="normal"
+            fullWidth
+            required
+            {...(!this.state.student.complaint && this.state.student.complaint === ""
+              ? { error: true }
+              : {})}
+          />
+
+          {/* <h2 className="mb-20">Relations</h2>*/}
+
+          {/* Relation m:m _courses with course */}
+
+          {/*/ <FormControl fullWidth className="mb-20">
+          //   <InputLabel htmlFor="_courses">Type complaint here</InputLabel>
+          //   <Select
+          //     multiple
+          //     value={this.state.student._courses || []}
+          //     onChange={Utils.handleChangeSelect.bind(this, "student")}
+          //     input={<Input id="_courses" name="_courses" />}
+          //     renderValue={selected => (
+          //       <div>
+          //         {selected.map(value => (
+          //           <Chip key={value} label={value} />
+          //         ))}
+          //       </div>
+          //     )}
+          //   >
+          //     {this.props.listCourse && this.props.listCourse.map(item => (
+          //       <MenuItem
+          //         key={item._id}
+          //         value={item._id}
+          //         style={{
+          //           fontWeight:
+          //             this.state.student._courses &&
+          //             this.state.student._courses.indexOf(item._id) === -1
+          //               ? "regular"
+          //               : "bold"
+          //         }}
+          //       >
+          //         {item._id}
+          //       </MenuItem>
+          //     ))}
+          //   </Select>
+          // </FormControl>*/}
+
           {/* EXTERNAL RELATIONS */}
-          
+
           {/* External relation with exam */}
-          
-          <h3>Exam</h3>
-          {(!this.props.listExam || this.props.listExam.length === 0) && 
+
+        {/*  <h3>Exam</h3>
+          {(!this.props.listExam || this.props.listExam.length === 0) &&
             <div>No Exam associated</div>
           }
           {this.props.listExam &&
@@ -202,14 +279,14 @@ class StudentEdit extends Component {
                 </Link>
               );
             })}
+            */}
 
-          
           {/* Footer */}
           <div className="footer-card">
             <Link to="/students/">Back to list</Link>
 
             <Button type="submit" variant="contained" color="primary">
-              Save
+              Post
             </Button>
           </div>
         </form>
@@ -220,7 +297,7 @@ class StudentEdit extends Component {
 
 // Store actions
 const mapDispatchToProps = function(dispatch) {
-  return { 
+  return {
     actionsStudent: bindActionCreators(StudentActions, dispatch),
     actionsExam: bindActionCreators(ExamActions, dispatch),
     actionsCourse: bindActionCreators(CourseActions, dispatch),
@@ -228,7 +305,7 @@ const mapDispatchToProps = function(dispatch) {
 };
 
 // Validate types
-StudentEdit.propTypes = { 
+StudentEdit.propTypes = {
   actionsStudent: PropTypes.object.isRequired,
   actionsExam: PropTypes.object.isRequired,
   actionsCourse: PropTypes.object.isRequired,

@@ -133,9 +133,9 @@ const generatedModel = {
   getByUsernameAndPassword: async (username, password) => {
     // CUSTOMIZE THIS FUNCTION
     // if you want to change login method
-    console.log("Hello");
-    // console.log(generatedModel.model.);
-    console.log("HI");
+    // console.log("Hello");
+    // // console.log(generatedModel.model.);
+    // console.log("HI");
     let user = await generatedModel.model
       .findOne({
         username: username,

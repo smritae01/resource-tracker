@@ -58,4 +58,13 @@ export default class Utils {
       }
     });
   }
+
+  static handleChangeCat(model, key, value) {
+    this.setState(...this.state, {
+      [model]: {
+        ...this.state[model],
+        [key]: value
+      }
+    });
+  }
 }

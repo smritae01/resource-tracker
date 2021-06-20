@@ -40,7 +40,7 @@
     "build-css": "node-sass --include-path ./src --include-path ./node_modules src/ -o src/",
     "watch-css": "yarn run build-css && node-sass --include-path ./src  --include-path ./node_modules src/ -o src/ --watch --recursive",
     "build": "yarn run build-css && react-scripts build",
-    "start": "concurrently --raw \"yarn run watch-css\" \"PORT=3001 react-scripts start\" ",
+    "start": "concurrently --raw \"yarn run watch-css\"  \"SET PORT=3001 && react-scripts start\" ",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }

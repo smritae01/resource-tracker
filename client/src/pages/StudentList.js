@@ -72,28 +72,28 @@ class StudentList extends Component {
 
   // Show content
   render() {
-    const columns = [ 
+    const columns = [
       {
-        id: "DOB",
-        type: "date",
-        label: "DOB"
-      }, 
+        id: "Cno",
+        type: "number",
+        label: "Complaint Number"
+      },
       {
-        id: "lastname",
+        id: "category",
         type: "string",
-        label: "Lastname"
-      }, 
+        label: "Category"
+      },
       {
-        id: "name",
+        id: "date",
         type: "string",
-        label: "Name"
+        label: "Date"
       },
     ];
     const link = "/students/";
 
     return (
       <div>
-        <h1>Student List</h1>
+        <h1>Your Complaints History</h1>
 
         <EnhancedTable
           data={this.props.list}
@@ -138,7 +138,7 @@ class StudentList extends Component {
         <div className="footer-card">
           <Link to="/students/new">
             <Button variant="contained" color="primary">
-              Add
+              Raise a new Complaint
             </Button>
           </Link>
         </div>
@@ -149,13 +149,13 @@ class StudentList extends Component {
 
 // Store actions
 const mapDispatchToProps = function(dispatch) {
-  return { 
+  return {
     actionsStudent: bindActionCreators(StudentActions, dispatch),
   };
 };
 
 // Validate types
-StudentList.propTypes = { 
+StudentList.propTypes = {
   actionsStudent: PropTypes.object.isRequired,
 };
 
