@@ -1,7 +1,7 @@
 
 
 import * as types from "../../actionTypes";
-import StudentApi from "../../../api/StudentApi";
+import StudentApi from "../../../api/generated/StudentApiGenerated";
 
 let actionsFunction = {
 
@@ -100,7 +100,7 @@ let actionsFunction = {
     return { type: types.LIST_STUDENT_SUCCESS, payload: list };
   },
 
-	
+
   // Save student
   saveStudent: function(student) {
     return function(dispatch) {

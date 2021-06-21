@@ -1,7 +1,7 @@
 
 
 import * as types from "../../actionTypes";
-import ExamApi from "../../../api/ExamApi";
+import ExamApi from "../../../api/generated/ExamApiGenerated";
 
 let actionsFunction = {
 
@@ -138,7 +138,7 @@ let actionsFunction = {
     return { type: types.LIST_EXAM_SUCCESS, payload: list };
   },
 
-	
+
   // Save exam
   saveExam: function(exam) {
     return function(dispatch) {
@@ -161,7 +161,7 @@ let actionsFunction = {
   /*
   Name: validate
   Description: this api is used to validate exam
-  Params: 
+  Params:
     String id - id for exam
   */
   validate: function(...params) {
@@ -180,7 +180,7 @@ let actionsFunction = {
   validateSuccess: function(result) {
     return { type: types.VALIDATE_EXAM_SUCCESS, payload: result };
   },
-		
+
 };
 
 export default actionsFunction;

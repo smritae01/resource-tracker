@@ -1,7 +1,7 @@
 
 
 import * as types from "../../actionTypes";
-import CourseApi from "../../../api/CourseApi";
+import CourseApi from "../../../api/generated/CourseApiGenerated";
 
 let actionsFunction = {
 
@@ -81,7 +81,7 @@ let actionsFunction = {
     return { type: types.LIST_COURSE_SUCCESS, payload: list };
   },
 
-	
+
   // Save course
   saveCourse: function(course) {
     return function(dispatch) {

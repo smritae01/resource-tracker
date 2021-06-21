@@ -21,19 +21,14 @@ import Chip from "@material-ui/core/Chip";
 
 
 // START IMPORT ACTIONS
-<<<<<<< HEAD
 import CourseActions from "../redux/actions/generated/CourseActionsGenerated";
 import ExamActions from "../redux/actions/generated/ExamActionsGenerated";
 import TeacherActions from "../redux/actions/generated/TeacherActionsGenerated";
 import StudentActions from "../redux/actions/generated/StudentActionsGenerated";
-=======
-import CourseActions from "../redux/actions/CourseActions";
-import ExamActions from "../redux/actions/ExamActions";
-import TeacherActions from "../redux/actions/TeacherActions";
-import StudentActions from "../redux/actions/StudentActions";
+
 // Table
 import EnhancedTable from "../components/EnhancedTable";
->>>>>>> b52ad55f6183d03bff2975a77021c0f359e3cc50
+
 // END IMPORT ACTIONS
 
 /** APIs
@@ -81,7 +76,7 @@ class CourseEdit extends Component {
       this.props.actionsStudent.findBy_courses(this.props.match.params.id);
       this.props.actionsTeacher.findBy_courses(this.props.match.params.id);
     }
-    
+
   }
   delete(id) {
     this.setState({ openDialogDelete: true, idDelete: id });
@@ -102,7 +97,7 @@ class CourseEdit extends Component {
       course: props.course
     });
   }
- 
+
   // Save data
   save(event) {
     event.preventDefault();
@@ -150,8 +145,8 @@ class CourseEdit extends Component {
         value: 'qc',
         label: "Quantum Computers",
       }];
-      const columns = [ 
-     
+      const columns = [
+
         {
           id: "department",
           type: "string",
@@ -169,7 +164,7 @@ class CourseEdit extends Component {
         <h1>Department</h1>
         <form className="myForm" onSubmit={this.save.bind(this)}>
 
-        {/* 
+        {/*
           <TextField
             id="department"
             label="Department"
@@ -186,9 +181,9 @@ class CourseEdit extends Component {
           {/* RELATIONS */}
 
           {/* EXTERNAL RELATIONS */}
-          
+
           {/* External relation with exam */}
-          
+
           <FormControl fullWidth className="mb-20">
       <InputLabel htmlFor="department">Choose Department</InputLabel>
         <Select
@@ -206,8 +201,8 @@ class CourseEdit extends Component {
           ))}
         </Select>
         </FormControl>
-        
-      
+
+
 
         <EnhancedTable
           data={this.props.list}
@@ -237,7 +232,7 @@ class CourseEdit extends Component {
 
 // Store actions
 const mapDispatchToProps = function(dispatch) {
-  return { 
+  return {
     actionsCourse: bindActionCreators(CourseActions, dispatch),
     actionsExam: bindActionCreators(ExamActions, dispatch),
     actionsTeacher: bindActionCreators(TeacherActions, dispatch),
@@ -246,7 +241,7 @@ const mapDispatchToProps = function(dispatch) {
 };
 
 // Validate types
-CourseEdit.propTypes = { 
+CourseEdit.propTypes = {
   actionsCourse: PropTypes.object.isRequired,
   actionsExam: PropTypes.object.isRequired,
   actionsTeacher: PropTypes.object.isRequired,

@@ -72,12 +72,7 @@ class CourseList extends Component {
 
   // Show content
   render() {
-<<<<<<< HEAD
     const columns = [
-=======
-    const columns = [ 
-     
->>>>>>> b52ad55f6183d03bff2975a77021c0f359e3cc50
       {
         id: "department",
         type: "string",
