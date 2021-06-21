@@ -17,7 +17,7 @@ import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 
 // Custom Actions
-import UserActions from "../redux/actions/UserActions";
+import UserActions from "../redux/actions/generated/UserActionsGenerated";
 import SecurityService from "../security/SecurityService";
 
 /** APIs

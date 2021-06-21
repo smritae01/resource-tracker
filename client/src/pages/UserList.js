@@ -7,7 +7,7 @@ import DialogDelete from "../components/DialogDelete";
 import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import UserActions from "../redux/actions/UserActions";
+import UserActions from "../redux/actions/generated/UserActionsGenerated";
 
 // Material UI
 import Button from "@material-ui/core/Button";

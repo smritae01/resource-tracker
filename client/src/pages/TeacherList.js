@@ -23,7 +23,7 @@ import EnhancedTable from "../components/EnhancedTable";
 
 
 // START IMPORT ACTIONS
-import TeacherActions from "../redux/actions/TeacherActions";
+import TeacherActions from "../redux/actions/generated/TeacherActionsGenerated";
 
 // END IMPORT ACTIONS
 

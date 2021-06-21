@@ -7,7 +7,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
 // Custom Actions
-import UserActions from '../redux/actions/UserActions';
+import UserActions from '../redux/actions/generated/UserActionsGenerated';
 
 // START IMPORT ACTIONS
 

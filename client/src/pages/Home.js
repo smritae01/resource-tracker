@@ -7,7 +7,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
 // Custom Actions
-import UserActions from '../redux/actions/UserActions';
+import UserActions from '../redux/actions/generated/UserActionsGenerated';
 
 // START IMPORT ACTIONS
 
@@ -20,17 +20,17 @@ import UserActions from '../redux/actions/UserActions';
 class Home extends Component {
   render() {
     return (
-      <div>
+      <div id="sitemap">
         <h3>Sitemap</h3>
 
         <div>
           <Link to="/complaints">Check Complaints</Link>
         </div>
         <div>
-          <Link to="/teachers">Link to teacherList</Link>
+          <Link to="/teachers">Check Status</Link>
         </div>
         <div>
-          <Link to="/courses">Link to courseList</Link>
+          <Link to="/courses">Inventory</Link>
         </div>
         <div>
           <Link to="/exams">Requests</Link>

@@ -9,7 +9,7 @@ import crypto from "js-sha3";
 import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import UserActions from "../redux/actions/UserActions";
+import UserActions from "../redux/actions/generated/UserActionsGenerated";
 
 // Material UI
 import TextField from "@material-ui/core/TextField";
@@ -26,7 +26,7 @@ import Delete from "@material-ui/icons/Delete";
 *
 * UserService.get
 *	@description CRUD ACTION get
-*	@param ObjectId id - Id 
+*	@param ObjectId id - Id
 *
 * UserService.update
 *	@description CRUD ACTION update

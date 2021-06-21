@@ -24,9 +24,9 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 // START IMPORT ACTIONS
-import StudentActions from "../redux/actions/StudentActions";
-import ExamActions from "../redux/actions/ExamActions";
-import CourseActions from "../redux/actions/CourseActions";
+import StudentActions from "../redux/actions/generated/StudentActionsGenerated";
+import ExamActions from "../redux/actions/generated/ExamActionsGenerated";
+import CourseActions from "../redux/actions/generated/CourseActionsGenerated";
 
 // END IMPORT ACTIONS
 

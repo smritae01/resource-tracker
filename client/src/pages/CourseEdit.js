@@ -15,11 +15,10 @@ import Button from "@material-ui/core/Button";
 // Custom Actions
 
 // START IMPORT ACTIONS
-import CourseActions from "../redux/actions/CourseActions";
-import ExamActions from "../redux/actions/ExamActions";
-import TeacherActions from "../redux/actions/TeacherActions";
-import StudentActions from "../redux/actions/StudentActions";
-
+import CourseActions from "../redux/actions/generated/CourseActionsGenerated";
+import ExamActions from "../redux/actions/generated/ExamActionsGenerated";
+import TeacherActions from "../redux/actions/generated/TeacherActionsGenerated";
+import StudentActions from "../redux/actions/generated/StudentActionsGenerated";
 // END IMPORT ACTIONS
 
 /** APIs

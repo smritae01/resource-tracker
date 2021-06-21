@@ -7,7 +7,7 @@ import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import UserActions from "../redux/actions/UserActions";
+import UserActions from "../redux/actions/generated/UserActionsGenerated";
 
 // Material UI
 import { withStyles } from "@material-ui/core/styles";

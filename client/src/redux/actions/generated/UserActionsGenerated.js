@@ -81,7 +81,7 @@ let actionsFunction = {
     return { type: types.LIST_USER_SUCCESS, payload: list };
   },
 
-	
+
   // Save user
   saveUser: function(user) {
     return function(dispatch) {
@@ -104,7 +104,7 @@ let actionsFunction = {
   /*
   Name: changePassword
   Description: Change password of user from admin
-  Params: 
+  Params:
   */
   changePassword: function(...params) {
     return function(dispatch) {
@@ -122,7 +122,70 @@ let actionsFunction = {
   changePasswordSuccess: function(result) {
     return { type: types.CHANGEPASSWORD_USER_SUCCESS, payload: result };
   },
-		
+
 };
+
+// Login
+actionsFunction.login = function(username, password) {
+  return function(dispatch) {
+    return UserApi.login(username, password)
+      .then(user => {
+        dispatch(actionsFunction.loginSuccess(user));
+      })
+      .catch(error => {
+        throw error;
+      });
+  };
+};
+
+actionsFunction.loginSuccess = function(user) {
+  return { type: types.LOGIN_SUCCESS, payload: user };
+};
+
+// Logut
+actionsFunction.logout = function(username, password) {
+  return function(dispatch) {
+    return dispatch(actionsFunction.logoutSuccess());
+  };
+};
+
+actionsFunction.logoutSuccess = function(user) {
+  return { type: types.LOGOUT_SUCCESS };
+};
+
+// Change password
+actionsFunction.changePassword = function(passwordNew, passwordOld) {
+  return function(dispatch) {
+    return UserApi.changePassword(passwordNew, passwordOld)
+      .then(user => {
+        dispatch(actionsFunction.changePasswordSuccess(user));
+      })
+      .catch(error => {
+        throw error;
+      });
+  };
+};
+
+actionsFunction.changePasswordSuccess = function(user) {
+  return { type: types.CHANGE_PASSWORD_SUCCESS, payload: user };
+};
+
+// Change password admin
+actionsFunction.changePasswordAdmin = function(id, passwordAdmin, passwordNew) {
+  return function(dispatch) {
+    return UserApi.changePasswordAdmin(id, passwordAdmin, passwordNew)
+      .then(user => {
+        dispatch(actionsFunction.changePasswordAdminSuccess(user));
+      })
+      .catch(error => {
+        throw error;
+      });
+  };
+};
+
+actionsFunction.changePasswordAdminSuccess = function(user) {
+  return { type: types.CHANGE_PASSWORD_ADMIN_SUCCESS, payload: user };
+};
+
 
 export default actionsFunction;

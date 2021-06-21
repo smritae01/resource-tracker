@@ -8,7 +8,7 @@ import SecurityService from "../security/SecurityService";
 import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import UserActions from "../redux/actions/UserActions";
+import UserActions from "../redux/actions/generated/UserActionsGenerated";
 
 // Material UI
 import Button from "@material-ui/core/Button";
@@ -115,14 +115,14 @@ class Login extends Component {
             />
           </FormControl>
 
-          {/*//OPTIONS TO LOGIN AS ADMIN OR USER
-          // <FormControl margin="normal" required fullWidth>
-          //   <InputLabel htmlFor="loginas">Login as</InputLabel>
-          //   <RadioGroup aria-label="loginfo" name="loginfo" value={this.state.login.loginfo || ""} onChange={Utils.handleChange.bind(this, "login")}>
-          //     <FormControlLabel value="user" control={<Radio />} label="User" />
-          //     <FormControlLabel value="admin" control={<Radio />} label="Admin" />
-          //   </RadioGroup>
-          // </FormControl>*/}
+          {/* OPTIONS TO LOGIN AS ADMIN OR USER
+          <FormControl margin="normal" required fullWidth>
+            <InputLabel htmlFor="loginas">Login as</InputLabel>
+            <RadioGroup aria-label="loginfo" name="loginfo" value={this.state.login.loginfo || ""} onChange={Utils.handleChange.bind(this, "login")}>
+            <FormControlLabel value="user" control={<Radio />} label="User" />
+            <FormControlLabel value="admin" control={<Radio />} label="Admin" />
+            </RadioGroup>
+            </FormControl> */}
 
           <FormControlLabel
             control={

@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import Utils from "../utils/utils";
 import crypto from "js-sha3";
-import UserActions from "../redux/actions/UserActions";
+import UserActions from "../redux/actions/generated/UserActionsGenerated";
 
 // Redux
 import PropTypes from "prop-types";

@@ -21,10 +21,10 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 // Custom Actions
 
 // START IMPORT ACTIONS
-import ExamActions from "../redux/actions/ExamActions";
-import StudentActions from "../redux/actions/StudentActions";
-import CourseActions from "../redux/actions/CourseActions";
-import TeacherActions from "../redux/actions/TeacherActions";
+import ExamActions from "../redux/actions/generated/ExamActionsGenerated";
+import StudentActions from "../redux/actions/generated/StudentActionsGenerated";
+import CourseActions from "../redux/actions/generated/CourseActionsGenerated";
+import TeacherActions from "../redux/actions/generated/TeacherActionsGenerated";
 
 class ExamEdit extends Component {
   // Init exam

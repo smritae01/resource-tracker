@@ -22,9 +22,9 @@ import Input from "@material-ui/core/Input";
 
 
 // START IMPORT ACTIONS
-import TeacherActions from "../redux/actions/TeacherActions";
-import ExamActions from "../redux/actions/ExamActions";
-import CourseActions from "../redux/actions/CourseActions";
+import TeacherActions from "../redux/actions/generated/TeacherActionsGenerated";
+import ExamActions from "../redux/actions/generated/ExamActionsGenerated";
+import CourseActions from "../redux/actions/generated/CourseActionsGenerated";
 
 // END IMPORT ACTIONS
 

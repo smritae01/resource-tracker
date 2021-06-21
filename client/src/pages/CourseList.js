@@ -23,7 +23,7 @@ import EnhancedTable from "../components/EnhancedTable";
 
 
 // START IMPORT ACTIONS
-import CourseActions from "../redux/actions/CourseActions";
+import CourseActions from "../redux/actions/generated/CourseActionsGenerated";
 
 // END IMPORT ACTIONS
 
@@ -72,7 +72,7 @@ class CourseList extends Component {
 
   // Show content
   render() {
-    const columns = [ 
+    const columns = [
       {
         id: "name",
         type: "string",
@@ -135,13 +135,13 @@ class CourseList extends Component {
 
 // Store actions
 const mapDispatchToProps = function(dispatch) {
-  return { 
+  return {
     actionsCourse: bindActionCreators(CourseActions, dispatch),
   };
 };
 
 // Validate types
-CourseList.propTypes = { 
+CourseList.propTypes = {
   actionsCourse: PropTypes.object.isRequired,
 };
 

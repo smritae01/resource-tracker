@@ -23,7 +23,7 @@ import EnhancedTable from "../components/EnhancedTable";
 
 
 // START IMPORT ACTIONS
-import ExamActions from "../redux/actions/ExamActions";
+import ExamActions from "../redux/actions/generated/ExamActionsGenerated";
 
 // END IMPORT ACTIONS
 

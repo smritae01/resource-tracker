@@ -5,7 +5,7 @@ export default class SecurityService {
   /**
    * Set Authorization header
    */
-  static setAuthorization() {
+  static setAuthorization() { // Gets and sets authorization token required to make api requests
     try {
       const user = JSON.parse(
         localStorage.getItem("user") || sessionStorage.getItem("user")
@@ -15,7 +15,7 @@ export default class SecurityService {
         console.log(user.token);
         axios.defaults.headers.common["authorization"] = `Bearer ${user.token}`;
       } else {
-        delete axios.defaults.headers.common["authorization"];
+        delete axios.defaults.headers.common["authorization"]; // deletes token in case user not found
       }
     } catch (e) {
       console.error("User not valid");
@@ -79,7 +79,7 @@ export default class SecurityService {
     if (user) {
       SecurityService.setAuthorization();
       try {
-        let res = await UserApi.verifyToken(user.token);
+        let res = await UserApi.verifyToken(user.token); // checks token
         if (res.username) {
           return true;
         } else {
