@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Utils from "../utils/utils";
-
+import DialogDelete from "../components/DialogDelete";
 // Redux
 import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
@@ -11,14 +11,29 @@ import { connect } from "react-redux";
 // Material UI
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
+import InputLabel from "@material-ui/core/InputLabel";
+import FormControl from "@material-ui/core/FormControl";
+import Chip from "@material-ui/core/Chip";
 
 // Custom Actions
 
+
 // START IMPORT ACTIONS
+<<<<<<< HEAD
 import CourseActions from "../redux/actions/generated/CourseActionsGenerated";
 import ExamActions from "../redux/actions/generated/ExamActionsGenerated";
 import TeacherActions from "../redux/actions/generated/TeacherActionsGenerated";
 import StudentActions from "../redux/actions/generated/StudentActionsGenerated";
+=======
+import CourseActions from "../redux/actions/CourseActions";
+import ExamActions from "../redux/actions/ExamActions";
+import TeacherActions from "../redux/actions/TeacherActions";
+import StudentActions from "../redux/actions/StudentActions";
+// Table
+import EnhancedTable from "../components/EnhancedTable";
+>>>>>>> b52ad55f6183d03bff2975a77021c0f359e3cc50
 // END IMPORT ACTIONS
 
 /** APIs
@@ -66,16 +81,28 @@ class CourseEdit extends Component {
       this.props.actionsStudent.findBy_courses(this.props.match.params.id);
       this.props.actionsTeacher.findBy_courses(this.props.match.params.id);
     }
-
+    
+  }
+  delete(id) {
+    this.setState({ openDialogDelete: true, idDelete: id });
+  }
+  closeDialogDelete() {
+    this.setState({ openDialogDelete: false, idDelete: null });
   }
 
+  confirmDialogDelete(id) {
+    this.props.actionsCourse.deleteCourse(this.state.idDelete).then(data => {
+      this.props.actionsCourse.loadCourseList();
+      this.setState({ openDialogDelete: false, idDelete: null });
+    });
+  }
   // Insert props course in state
   componentWillReceiveProps(props) {
     this.setState(...this.state, {
       course: props.course
     });
   }
-
+ 
   // Save data
   save(event) {
     event.preventDefault();
@@ -89,19 +116,64 @@ class CourseEdit extends Component {
       });
     }
   }
-
+  handleChange = (event, index, value) => {
+    this.setState({ selectedValue: value });
+  };
   // Show content
   render() {
+    var catArr = [
+      {
+        value: 'cs',
+        label: "Computer Science",
+      },
+      {
+        value: 'mc',
+        label: "Workshop",
+      },
+      {
+        value: 'ds',
+        label: "Design Thinking",
+      },
+      {
+        value: 'ec',
+        label: "Electrical",
+      },
+      {
+        value: 'et',
+        label:  "Electronics",
+      },
+      {
+          value: 'ch',
+          label:"Chemistry",
+      },
+      {
+        value: 'qc',
+        label: "Quantum Computers",
+      }];
+      const columns = [ 
+     
+        {
+          id: "department",
+          type: "string",
+          label: "Department"
+        },
+        {
+          id: "QuanNo",
+          type: "number",
+          label: "Quantity"
+        },
+      ];
+      const link = "/courses/";
     return (
       <div>
-        <h1>Course Edit</h1>
+        <h1>Department</h1>
         <form className="myForm" onSubmit={this.save.bind(this)}>
 
-
+        {/* 
           <TextField
-            id="name"
-            label="Name"
-            value={this.state.course.name || ""}
+            id="department"
+            label="Department"
+            value={this.state.course.department || ""}
             onChange={Utils.handleChange.bind(this, "course")}
             margin="normal"
             fullWidth
@@ -110,59 +182,45 @@ class CourseEdit extends Component {
               ? { error: true }
               : {})}
           />
-
+        */}
           {/* RELATIONS */}
 
           {/* EXTERNAL RELATIONS */}
-
+          
           {/* External relation with exam */}
+          
+          <FormControl fullWidth className="mb-20">
+      <InputLabel htmlFor="department">Choose Department</InputLabel>
+        <Select
+          id="category"
+          select
+          label="Select"
+          value={this.state.course.category || ""}
+          onClick={Utils.handleChange.bind(this, "student")}
+          helperText="Please select the department "
+          >
+          {catArr.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </Select>
+        </FormControl>
+        
+      
 
-          <h3>Exam</h3>
-          {(!this.props.listExam || this.props.listExam.length === 0) &&
-            <div>No Exam associated</div>
-          }
-          {this.props.listExam &&
-            this.props.listExam.map((item, i) => {
-              return (
-                <Link to={"/exams/" + item._id} key={item._id}>
-                  {item._id}
-                </Link>
-              );
-            })}
+        <EnhancedTable
+          data={this.props.list}
+          columns={columns}
+          link={link}
+          onDelete={this.delete.bind(this)}
+        />
 
-
-          {/* External relation with student */}
-
-          <h3>Student</h3>
-          {(!this.props.listStudent || this.props.listStudent.length === 0) &&
-            <div>No Student associated</div>
-          }
-          {this.props.listStudent &&
-            this.props.listStudent.map((item, i) => {
-              return (
-                <Link to={"/students/" + item._id} key={item._id}>
-                  {item._id}
-                </Link>
-              );
-            })}
-
-
-          {/* External relation with teacher */}
-
-          <h3>Teacher</h3>
-          {(!this.props.listTeacher || this.props.listTeacher.length === 0) &&
-            <div>No Teacher associated</div>
-          }
-          {this.props.listTeacher &&
-            this.props.listTeacher.map((item, i) => {
-              return (
-                <Link to={"/teachers/" + item._id} key={item._id}>
-                  {item._id}
-                </Link>
-              );
-            })}
-
-
+        <DialogDelete
+          open={this.state.openDialogDelete}
+          onClose={this.closeDialogDelete.bind(this)}
+          onConfirm={this.confirmDialogDelete.bind(this)}
+        />
           {/* Footer */}
           <div className="footer-card">
             <Link to="/courses/">Back to list</Link>
@@ -179,7 +237,7 @@ class CourseEdit extends Component {
 
 // Store actions
 const mapDispatchToProps = function(dispatch) {
-  return {
+  return { 
     actionsCourse: bindActionCreators(CourseActions, dispatch),
     actionsExam: bindActionCreators(ExamActions, dispatch),
     actionsTeacher: bindActionCreators(TeacherActions, dispatch),
@@ -188,7 +246,7 @@ const mapDispatchToProps = function(dispatch) {
 };
 
 // Validate types
-CourseEdit.propTypes = {
+CourseEdit.propTypes = { 
   actionsCourse: PropTypes.object.isRequired,
   actionsExam: PropTypes.object.isRequired,
   actionsTeacher: PropTypes.object.isRequired,

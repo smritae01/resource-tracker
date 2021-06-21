@@ -72,18 +72,28 @@ class CourseList extends Component {
 
   // Show content
   render() {
+<<<<<<< HEAD
     const columns = [
+=======
+    const columns = [ 
+     
+>>>>>>> b52ad55f6183d03bff2975a77021c0f359e3cc50
       {
-        id: "name",
+        id: "department",
         type: "string",
-        label: "Name"
+        label: "Department"
+      },
+      {
+        id: "QuanNo",
+        type: "number",
+        label: "Quantity"
       },
     ];
     const link = "/courses/";
 
     return (
       <div>
-        <h1>Course List</h1>
+        <h1>Updated Item List</h1>
 
         <EnhancedTable
           data={this.props.list}
@@ -124,7 +134,7 @@ class CourseList extends Component {
         <div className="footer-card">
           <Link to="/courses/new">
             <Button variant="contained" color="primary">
-              Add
+              Update inventory
             </Button>
           </Link>
         </div>
