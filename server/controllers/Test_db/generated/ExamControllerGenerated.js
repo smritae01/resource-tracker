@@ -10,7 +10,7 @@ const generatedControllers = {
    * Init routes
    */
   init: router => {
-    const baseUrl = `${Properties.api}/exam`;
+    const baseUrl = `${Properties.api}/requests`;
     router.post(baseUrl + "", authorize([]), ExamController.create);
     router.delete(baseUrl + "/:id", authorize([]), ExamController.delete);
     router.get(baseUrl + "/findBy_course/:key", authorize([]), ExamController.findBy_course);
@@ -40,7 +40,7 @@ const generatedControllers = {
       res.status(safeErr.status).json(safeErr);
     }
   },
-  
+
   /**
   * examModel.delete
   *   @description CRUD ACTION delete
@@ -56,7 +56,7 @@ const generatedControllers = {
       res.status(safeErr.status).json(safeErr);
     }
   },
-  
+
   /**
   * examModel.findBy_course
   *   @description CRUD ACTION findBy_course
@@ -72,7 +72,7 @@ const generatedControllers = {
       res.status(safeErr.status).json(safeErr);
     }
   },
-  
+
   /**
   * examModel.findBy_student
   *   @description CRUD ACTION findBy_student
@@ -88,7 +88,7 @@ const generatedControllers = {
       res.status(safeErr.status).json(safeErr);
     }
   },
-  
+
   /**
   * examModel.findBy_teacher
   *   @description CRUD ACTION findBy_teacher
@@ -104,7 +104,7 @@ const generatedControllers = {
       res.status(safeErr.status).json(safeErr);
     }
   },
-  
+
   /**
   * examModel.get
   *   @description CRUD ACTION get
@@ -120,7 +120,7 @@ const generatedControllers = {
       res.status(safeErr.status).json(safeErr);
     }
   },
-  
+
   /**
   * examModel.list
   *   @description CRUD ACTION list
@@ -135,8 +135,8 @@ const generatedControllers = {
       res.status(safeErr.status).json(safeErr);
     }
   },
-  
-  
+
+
   /**
   * examModel.update
   *   @description CRUD ACTION update
@@ -152,8 +152,8 @@ const generatedControllers = {
       res.status(safeErr.status).json(safeErr);
     }
   },
-    
-  
+
+
   // Custom APIs
 
   /**

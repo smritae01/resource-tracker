@@ -84,6 +84,11 @@ class StudentList extends Component {
         label: "Category"
       },
       {
+        id: "complaint",
+        type: "string",
+        label: "Complaint"
+      },
+      {
         id: "date",
         type: "string",
         label: "Date"

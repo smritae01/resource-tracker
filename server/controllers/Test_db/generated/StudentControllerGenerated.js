@@ -37,7 +37,7 @@ const generatedControllers = {
       res.status(safeErr.status).json(safeErr);
     }
   },
-  
+
   /**
   * studentModel.delete
   *   @description CRUD ACTION delete
@@ -53,7 +53,7 @@ const generatedControllers = {
       res.status(safeErr.status).json(safeErr);
     }
   },
-  
+
   /**
   * studentModel.findBy_courses
   *   @description CRUD ACTION findBy_courses
@@ -69,7 +69,7 @@ const generatedControllers = {
       res.status(safeErr.status).json(safeErr);
     }
   },
-  
+
   /**
   * studentModel.get
   *   @description CRUD ACTION get
@@ -85,7 +85,7 @@ const generatedControllers = {
       res.status(safeErr.status).json(safeErr);
     }
   },
-  
+
   /**
   * studentModel.list
   *   @description CRUD ACTION list
@@ -100,8 +100,8 @@ const generatedControllers = {
       res.status(safeErr.status).json(safeErr);
     }
   },
-  
-  
+
+
   /**
   * studentModel.update
   *   @description CRUD ACTION update
@@ -117,8 +117,8 @@ const generatedControllers = {
       res.status(safeErr.status).json(safeErr);
     }
   },
-  
-  
+
+
   // Custom APIs
 
 };

@@ -210,8 +210,14 @@ paths:
             schema:
               type: object
               properties:
-                name:
+                res_id:
+                  type: number
+                res_name:
                   type: string
+                dept:
+                  type: string
+                QuanNo:
+                  type: number
     get:
       summary: CRUD ACTION list
       tags:
@@ -310,7 +316,7 @@ paths:
                   type: date
                 desc:
                   type: string
-                desc: status
+                status:
                   type: string
     get:
       summary: CRUD ACTION list
@@ -487,11 +493,11 @@ paths:
             schema:
               type: object
               properties:
-                DOB:
+                Cno:
                   type: integer
-                lastname:
+                category:
                   type: string
-                name:
+                date:
                   type: string
     get:
       summary: CRUD ACTION list
@@ -870,13 +876,17 @@ components:
 
     course:
       properties:
-        _id:
+        res_id:
+          type: number
+        res_name:
           type: string
-        name:
+        dept:
           type: string
+        QuanNo:
+          type: number
+
       required:
-        -  _id
-        - name
+        -  res_id
 
 
     exam:
@@ -899,17 +909,14 @@ components:
       properties:
         _id:
           type: string
-        DOB:
+        Cno:
           type: integer
-        lastname:
+        category:
           type: string
-        name:
+        date:
           type: string
       required:
         -  _id
-        - DOB
-        - lastname
-        - name
 
 
     teacher:

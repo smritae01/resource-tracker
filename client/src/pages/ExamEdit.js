@@ -109,7 +109,7 @@ class ExamEdit extends Component {
           <h2 className="mb-20">Relations</h2> */}
 
           {/* Relation 1:m _course with course */}
-          <FormControl fullWidth className="mb-20">
+          {/* <FormControl fullWidth className="mb-20">
             <InputLabel> Select Item </InputLabel>
             <Select
               value={this.state.exam._course || ""}
@@ -129,13 +129,12 @@ class ExamEdit extends Component {
                 </MenuItem>
               ))}
             </Select>
-          </FormControl>
+          </FormControl> */}
 
 
           {/* Footer */}
           <div className="footer-card">
             <Link to="/requests/">Back to list</Link>
-
             <Button type="submit" variant="contained" color="primary">
               Save
             </Button>

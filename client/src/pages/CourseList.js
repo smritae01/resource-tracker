@@ -75,13 +75,23 @@ class CourseList extends Component {
   render() {
     const columns = [
       {
-        id: "department",
+        id: "res_id",
+        type: "number",
+        label: "ID"
+      },
+      {
+        id: "res_name",
+        type: "string",
+        label: "Resource Name"
+      },
+      {
+        id: "dept",
         type: "string",
         label: "Department"
       },
       {
         id: "QuanNo",
-        type: "number",
+        type: "string",
         label: "Quantity"
       },
     ];

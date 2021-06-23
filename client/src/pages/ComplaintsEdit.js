@@ -243,63 +243,6 @@ class ComplaintsEdit extends Component {
       </Select>
       </FormControl>
 
-
-
-          {/* <h2 className="mb-20">Relations</h2>*/}
-
-          {/* Relation m:m _courses with course */}
-
-          {/*/ <FormControl fullWidth className="mb-20">
-          //   <InputLabel htmlFor="_courses">Type complaint here</InputLabel>
-          //   <Select
-          //     multiple
-          //     value={this.state.student._courses || []}
-          //     onChange={Utils.handleChangeSelect.bind(this, "student")}
-          //     input={<Input id="_courses" name="_courses" />}
-          //     renderValue={selected => (
-          //       <div>
-          //         {selected.map(value => (
-          //           <Chip key={value} label={value} />
-          //         ))}
-          //       </div>
-          //     )}
-          //   >
-          //     {this.props.listCourse && this.props.listCourse.map(item => (
-          //       <MenuItem
-          //         key={item._id}
-          //         value={item._id}
-          //         style={{
-          //           fontWeight:
-          //             this.state.student._courses &&
-          //             this.state.student._courses.indexOf(item._id) === -1
-          //               ? "regular"
-          //               : "bold"
-          //         }}
-          //       >
-          //         {item._id}
-          //       </MenuItem>
-          //     ))}
-          //   </Select>
-          // </FormControl>*/}
-
-          {/* EXTERNAL RELATIONS */}
-
-          {/* External relation with exam */}
-
-        {/*  <h3>Exam</h3>
-          {(!this.props.listExam || this.props.listExam.length === 0) &&
-            <div>No Exam associated</div>
-          }
-          {this.props.listExam &&
-            this.props.listExam.map((item, i) => {
-              return (
-                <Link to={"/requests/" + item._id} key={item._id}>
-                  {item._id}
-                </Link>
-              );
-            })}
-            */}
-
           {/* Footer */}
           <div className="footer-card">
             <Link to="/complaints/">Back to list</Link>

@@ -6,7 +6,7 @@ import { properties } from "../../config/properties";
 
 class ExamApiGenerated {
 
-  static contextUrl = properties.endpoint + "/exam";
+  static contextUrl = properties.endpoint + "/requests";
 
   // CRUD METHODS
 

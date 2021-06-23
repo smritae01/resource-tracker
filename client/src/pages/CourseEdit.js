@@ -145,71 +145,86 @@ class CourseEdit extends Component {
         value: 'qc',
         label: "Quantum Computers",
       }];
-      const columns = [
+      // const columns = [
 
-        {
-          id: "department",
-          type: "string",
-          label: "Department"
-        },
-        {
-          id: "QuanNo",
-          type: "number",
-          label: "Quantity"
-        },
-      ];
+      //   {
+      //     id: "dept",
+      //     type: "string",
+      //     label: "Department"
+      //   },
+      //   {
+      //     id: "QuanNo",
+      //     type: "number",
+      //     label: "Quantity"
+      //   },
+      // ];
       const link = "/courses/";
     return (
       <div>
         <h1>Department</h1>
         <form className="myForm" onSubmit={this.save.bind(this)}>
 
-        {/*
-          <TextField
-            id="department"
-            label="Department"
-            value={this.state.course.department || ""}
+
+      <FormControl fullWidth className="mb-20">
+      <TextField
+            id="res_id"
+            label="Resource ID"
+            value={this.state.course.res_id || ""}
             onChange={Utils.handleChange.bind(this, "course")}
             margin="normal"
             fullWidth
-            required
-            {...(!this.state.course.name && this.state.course.name === ""
-              ? { error: true }
-              : {})}
           />
-        */}
-          {/* RELATIONS */}
 
-          {/* EXTERNAL RELATIONS */}
+          <TextField
+            id="res_name"
+            label="Resource Name"
+            value={this.state.course.res_name || ""}
+            onChange={Utils.handleChange.bind(this, "course")}
+            margin="normal"
+            fullWidth
+          />
 
-          {/* External relation with exam */}
 
-          <FormControl fullWidth className="mb-20">
-      <InputLabel htmlFor="department">Choose Department</InputLabel>
-        <Select
-          id="category"
-          select
-          label="Select"
-          value={this.state.course.category || ""}
-          onClick={Utils.handleChange.bind(this, "student")}
-          helperText="Please select the department "
-          >
+          <TextField
+            id="QuanNo"
+            label="Quantity"
+            value={this.state.course.QuanNo || ""}
+            onChange={Utils.handleChange.bind(this, "course")}
+            margin="normal"
+            fullWidth
+          />
+
+          <TextField
+            id="dept"
+            label="Department"
+            value={this.state.course.dept || ""}
+            onChange={Utils.handleChange.bind(this, "course")}
+            margin="normal"
+            fullWidth
+          />
+
+          {/* <InputLabel htmlFor="department">Choose Department</InputLabel>
+          <Select
+            label="Select"
+            value={this.state.course.dept || ""}
+            onClick={Utils.handleChange.bind(this, "course")}
+            >
           {catArr.map((option) => (
             <MenuItem key={option.value} value={option.value}>
               {option.label}
             </MenuItem>
           ))}
-        </Select>
+        </Select> */}
         </FormControl>
 
 
 
-        <EnhancedTable
+        {/* <EnhancedTable
           data={this.props.list}
           columns={columns}
           link={link}
           onDelete={this.delete.bind(this)}
-        />
+        /> */}
 
         <DialogDelete
           open={this.state.openDialogDelete}

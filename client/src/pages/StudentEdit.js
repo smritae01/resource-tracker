@@ -106,24 +106,32 @@ class StudentEdit extends Component {
         <h1>New Complaint</h1>
         <form className="myForm" onSubmit={this.save.bind(this)}>
 
-          <DateTimePicker
+          {/* <DateTimePicker
             id="date"
             label="Date"
             className="mt-20 mb-20"
             ampm={false}
-            value={
-              this.state.student.date
-                ? new Date(this.state.student.date)
-                : null
-            }
+            // value={
+            //   this.state.student.date
+            //     ? new Date(this.state.student.date)
+            //     : null
+            // }
+            value = {this.state.student.date || ""}
             onChange={Utils.handleChangeDate.bind(this, "student", "date")}
             fullWidth
             autoOk
             disableFuture
             required
-            {...(!this.state.student.date && this.state.student.date === ""
-              ? { error: true }
-              : {})}
+          /> */}
+
+          <TextField
+            id="date"
+            label="Date"
+            value={this.state.student.date || ""}
+            onChange={Utils.handleChange.bind(this, "student")}
+            margin="normal"
+            fullWidth
+            required
           />
 
 
@@ -135,12 +143,19 @@ class StudentEdit extends Component {
             margin="normal"
             fullWidth
             required
-            {...(!this.state.student.Cno && this.state.student.Cno === ""
-              ? { error: true }
-              : {})}
           />
 
-          <FormControl fullWidth className="mb-20">
+          <TextField
+            id="category"
+            label="Category"
+            value={this.state.student.category || ""}
+            onChange={Utils.handleChange.bind(this, "student")}
+            margin="normal"
+            fullWidth
+            required
+          />
+
+          {/* <FormControl fullWidth className="mb-20">
       <InputLabel htmlFor="category">Choose Category</InputLabel>
         <Select
           id="category"
@@ -156,7 +171,7 @@ class StudentEdit extends Component {
             </MenuItem>
           ))}
         </Select>
-        </FormControl>
+        </FormControl> */}
 
           <TextField
             id="complaint"
@@ -166,15 +181,11 @@ class StudentEdit extends Component {
             margin="normal"
             fullWidth
             required
-            {...(!this.state.student.complaint && this.state.student.complaint === ""
-              ? { error: true }
-              : {})}
           />
 
           {/* Footer */}
           <div className="footer-card">
             <Link to="/students/">Back to list</Link>
-
             <Button type="submit" variant="contained" color="primary">
               Post
             </Button>

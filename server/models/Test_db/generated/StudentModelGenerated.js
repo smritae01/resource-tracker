@@ -17,16 +17,20 @@ const generatedModel = {
       * student
       */
     const studentSchema = new mongoose.Schema({
-      date: {
-        type: "Date",
-        required: true
-      },
       Cno: {
-        type: "number",
+        type: "Number",
         required: true
       },
       category: {
         type: "String",
+        required: false
+      },
+      complaint: {
+        type: "String",
+        required: true
+      },
+      date: {
+        type: "string",
         required: true
       },
       // RELATIONS

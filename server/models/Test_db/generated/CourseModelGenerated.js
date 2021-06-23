@@ -17,13 +17,21 @@ const generatedModel = {
       * course
       */
     const courseSchema = new mongoose.Schema({
-      name: {
-        type: "String", 
-        required: true
+      req_no: {
+        type: "Number"
+      },
+      res_name: {
+        type: "String"
+      },
+      dept: {
+        type: "String"
+      },
+      QuanNo: {
+        type: "String"
       },
       // RELATIONS
-      
-      
+
+
       // EXTERNAL RELATIONS
       /*
       _course: {
@@ -61,7 +69,7 @@ const generatedModel = {
   },
 
   // Start queries
-    
+
 
   // CRUD METHODS
 
@@ -75,7 +83,7 @@ const generatedModel = {
     const obj = new generatedModel.model(item);
     return await obj.save();
   },
-  
+
   /**
   * courseModel.delete
   *   @description CRUD ACTION delete
@@ -85,7 +93,7 @@ const generatedModel = {
   async delete(id) {
     return await generatedModel.model.findByIdAndRemove(id);
   },
-  
+
   /**
   * courseModel.get
   *   @description CRUD ACTION get
@@ -95,7 +103,7 @@ const generatedModel = {
   async get(id) {
     return await generatedModel.model.findOne({ _id : id });
   },
-  
+
   /**
   * courseModel.list
   *   @description CRUD ACTION list
@@ -104,17 +112,17 @@ const generatedModel = {
   async list() {
     return await generatedModel.model.find();
   },
-  
+
   /**
   * courseModel.update
   *   @description CRUD ACTION update
   *   @param ObjectId id Id
   *
   */
-  async update(item) { 
+  async update(item) {
     return await generatedModel.model.findOneAndUpdate({ _id: item._id }, item, {'new': true});
   },
-  
+
 
 
 };
