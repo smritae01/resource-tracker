@@ -108,33 +108,6 @@ class StudentList extends Component {
           onConfirm={this.confirmDialogDelete.bind(this)}
         />
 
-        {/*
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell align="right">DOB</TableCell>
-              <TableCell align="right">Lastname</TableCell>
-              <TableCell align="right">Name</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {this.props.list.map(row => (
-              <TableRow key={row._id}>
-                <TableCell component="th" scope="row">
-                  <Link to={"/students/" + row._id} key={row._id}>
-                    {row._id}
-                  </Link>
-                </TableCell>
-                <TableCell align="right">{ row.DOB }</TableCell>
-                <TableCell align="right">{ row.lastname }</TableCell>
-                <TableCell align="right">{ row.name }</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-        */}
-
         <div className="footer-card">
           <Link to="/students/new">
             <Button variant="contained" color="primary">

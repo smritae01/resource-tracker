@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import DialogDelete from "../components/DialogDelete";
+import SecurityService from "../security/SecurityService";
 
 // Redux
 import PropTypes from "prop-types";
@@ -88,7 +89,7 @@ class CourseList extends Component {
 
     return (
       <div>
-        <h1>Updated Item List</h1>
+        <h1>INVENTORY</h1>
 
         <EnhancedTable
           data={this.props.list}
@@ -103,29 +104,7 @@ class CourseList extends Component {
           onConfirm={this.confirmDialogDelete.bind(this)}
         />
 
-        {/*
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell align="right">Name</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {this.props.list.map(row => (
-              <TableRow key={row._id}>
-                <TableCell component="th" scope="row">
-                  <Link to={"/courses/" + row._id} key={row._id}>
-                    {row._id}
-                  </Link>
-                </TableCell>
-                <TableCell align="right">{ row.name }</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-        */}
-
+        {SecurityService.hasRole("ADMIN") && (
         <div className="footer-card">
           <Link to="/courses/new">
             <Button variant="contained" color="primary">
@@ -133,6 +112,7 @@ class CourseList extends Component {
             </Button>
           </Link>
         </div>
+        )}
       </div>
     );
   }

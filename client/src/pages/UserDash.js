@@ -9,36 +9,21 @@ import { connect } from "react-redux";
 // Custom Actions
 import UserActions from '../redux/actions/generated/UserActionsGenerated';
 
-// START IMPORT ACTIONS
-
-// END IMPORT ACTIONS
-
-/** APIs
-
-**/
-
 class Home extends Component {
   render() {
     return (
       <div>
         <h2>Home</h2>
 
-        <h3>Dashboard</h3>
-
         <div>
-          <Link to="/exams">Requests</Link>
+          <Link to="/requests">Requests</Link>
         </div>
         <div>
-          <Link to="/teachers">Check Status</Link>
+          <Link to="/courses">Inventory</Link>
         </div>
         <div>
           <Link to="/students">Raise Complaint</Link>
         </div>
-        <div>
-          <Link to="/exams">Other</Link>
-        </div>
-
-
       </div>
     );
   }

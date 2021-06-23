@@ -17,16 +17,16 @@ const generatedModel = {
       * student
       */
     const studentSchema = new mongoose.Schema({
-      DOB: {
-        type: "Date", 
+      date: {
+        type: "Date",
         required: true
       },
-      lastname: {
-        type: "String", 
+      Cno: {
+        type: "number",
         required: true
       },
-      name: {
-        type: "String", 
+      category: {
+        type: "String",
         required: true
       },
       // RELATIONS
@@ -34,8 +34,8 @@ const generatedModel = {
         type: Schema.ObjectId,
         ref: "course"
       }],
-      
-      
+
+
       // EXTERNAL RELATIONS
       /*
       _student: {
@@ -65,7 +65,7 @@ const generatedModel = {
   },
 
   // Start queries
-    
+
 
   // CRUD METHODS
 
@@ -79,7 +79,7 @@ const generatedModel = {
     const obj = new generatedModel.model(item);
     return await obj.save();
   },
-  
+
   /**
   * studentModel.delete
   *   @description CRUD ACTION delete
@@ -89,7 +89,7 @@ const generatedModel = {
   async delete(id) {
     return await generatedModel.model.findByIdAndRemove(id);
   },
-  
+
   /**
   * studentModel.findBy_courses
   *   @description CRUD ACTION findBy_courses
@@ -99,7 +99,7 @@ const generatedModel = {
   async findBy_courses(key) {
     return await generatedModel.model.find({ '_courses' : key});
   },
-  
+
   /**
   * studentModel.get
   *   @description CRUD ACTION get
@@ -109,7 +109,7 @@ const generatedModel = {
   async get(id) {
     return await generatedModel.model.findOne({ _id : id });
   },
-  
+
   /**
   * studentModel.list
   *   @description CRUD ACTION list
@@ -118,17 +118,17 @@ const generatedModel = {
   async list() {
     return await generatedModel.model.find();
   },
-  
+
   /**
   * studentModel.update
   *   @description CRUD ACTION update
   *   @param ObjectId id Id
   *
   */
-  async update(item) { 
+  async update(item) {
     return await generatedModel.model.findOneAndUpdate({ _id: item._id }, item, {'new': true});
   },
-  
+
 
 
 };

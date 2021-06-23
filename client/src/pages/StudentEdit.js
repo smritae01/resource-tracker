@@ -29,28 +29,6 @@ import ExamActions from "../redux/actions/generated/ExamActionsGenerated";
 import CourseActions from "../redux/actions/generated/CourseActionsGenerated";
 // END IMPORT ACTIONS
 
-/** APIs
-
-* actionsStudent.create
-*	@description CRUD ACTION create
-*
-* actionsStudent.update
-*	@description CRUD ACTION update
-*	@param ObjectId id - Id
-*
-* actionsStudent.get
-*	@description CRUD ACTION get
-*	@param ObjectId id - Id resource
-*
-* actionsExam.findBy_student
-*	@description CRUD ACTION findBy_student
-*	@param Objectid key - Id of model to search for
-*
-* actionsCourse.list
-*	@description CRUD ACTION list
-*
-
-**/
 
 class StudentEdit extends Component {
   // Init student
@@ -122,11 +100,7 @@ class StudentEdit extends Component {
           value: 'oth',
           label: "Other",
         }];
-        // const [cat, setCat] = React.useState('');
-        //
-        // const handleChange = (event) => {
-        //   setCat(event.target.value);
-        // };
+
     return (
       <div>
         <h1>New Complaint</h1>
@@ -166,34 +140,6 @@ class StudentEdit extends Component {
               : {})}
           />
 
-          {/* RELATIONS
-
-          //
-          // <FormControl fullWidth className="mb-20">
-          //   <InputLabel htmlFor="category">Choose Category</InputLabel>
-          //   <Select
-          //   //   multiple
-          //   //   value={this.state.student.category || catArr}
-          //   //   onChange={Utils.handleChangeSelect.bind(this, "student")}
-          //   //   input={<Input id="category" name="Category" />}
-          //   //   renderValue={selected => (
-          //   //     <div>
-          //   //       {selected.map(value => (
-          //   //         <Chip key={value} label={value} />
-          //   //       ))}
-          //   //     </div>
-          //   //   )}
-          //   // >
-          //   //MODIFY HERE WITH CATEGORY
-          //     {catArr.map(item => (
-          //       <MenuItem
-          //         key={item}
-          //         selected={option === "Other"} onClick={handleClose}
-          //       >{item}
-          //       </MenuItem>
-          //     ))}
-          //     </Select>
-          // </FormControl>*/}
           <FormControl fullWidth className="mb-20">
       <InputLabel htmlFor="category">Choose Category</InputLabel>
         <Select
@@ -224,61 +170,6 @@ class StudentEdit extends Component {
               ? { error: true }
               : {})}
           />
-
-          {/* <h2 className="mb-20">Relations</h2>*/}
-
-          {/* Relation m:m _courses with course */}
-
-          {/*/ <FormControl fullWidth className="mb-20">
-          //   <InputLabel htmlFor="_courses">Type complaint here</InputLabel>
-          //   <Select
-          //     multiple
-          //     value={this.state.student._courses || []}
-          //     onChange={Utils.handleChangeSelect.bind(this, "student")}
-          //     input={<Input id="_courses" name="_courses" />}
-          //     renderValue={selected => (
-          //       <div>
-          //         {selected.map(value => (
-          //           <Chip key={value} label={value} />
-          //         ))}
-          //       </div>
-          //     )}
-          //   >
-          //     {this.props.listCourse && this.props.listCourse.map(item => (
-          //       <MenuItem
-          //         key={item._id}
-          //         value={item._id}
-          //         style={{
-          //           fontWeight:
-          //             this.state.student._courses &&
-          //             this.state.student._courses.indexOf(item._id) === -1
-          //               ? "regular"
-          //               : "bold"
-          //         }}
-          //       >
-          //         {item._id}
-          //       </MenuItem>
-          //     ))}
-          //   </Select>
-          // </FormControl>*/}
-
-          {/* EXTERNAL RELATIONS */}
-
-          {/* External relation with exam */}
-
-        {/*  <h3>Exam</h3>
-          {(!this.props.listExam || this.props.listExam.length === 0) &&
-            <div>No Exam associated</div>
-          }
-          {this.props.listExam &&
-            this.props.listExam.map((item, i) => {
-              return (
-                <Link to={"/exams/" + item._id} key={item._id}>
-                  {item._id}
-                </Link>
-              );
-            })}
-            */}
 
           {/* Footer */}
           <div className="footer-card">

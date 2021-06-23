@@ -24,6 +24,7 @@ import EnhancedTable from "../components/EnhancedTable";
 
 // START IMPORT ACTIONS
 import ExamActions from "../redux/actions/generated/ExamActionsGenerated";
+import SecurityService from "../security/SecurityService";
 
 // END IMPORT ACTIONS
 
@@ -74,7 +75,7 @@ class ExamList extends Component {
   render() {
     const columns = [
       {
-        id: "req no.",
+        id: "req_no",
         type: "string",
         label: "Request No."
       },
@@ -88,8 +89,13 @@ class ExamList extends Component {
         type: "string",
         label: "Description"
       },
+      {
+        id: "status",
+        type: "string",
+        label: "Status"
+      },
     ];
-    const link = "/exams/";
+    const link = "/requests/";
 
     return (
       <div>
@@ -107,23 +113,22 @@ class ExamList extends Component {
           onClose={this.closeDialogDelete.bind(this)}
           onConfirm={this.confirmDialogDelete.bind(this)}
         />
+        {SecurityService.hasRole("ADMIN") ? (<div></div>) :
 
-        <div className="footer-card">
-          <Link to="/exams/new">
+        (<div><div className="footer-card">
+          <Link to="/requests/new">
             <Button variant="contained" color="primary">
               Make Repair Request
             </Button>
           </Link>
         </div>
-
         <div className="footer-card">
-          <Link to="/exams/new">
+          <Link to="/requests/new">
             <Button variant="contained" color="primary">
               Make Resource Request
             </Button>
           </Link>
-        </div>
-
+        </div></div>)}
       </div>
     );
   }

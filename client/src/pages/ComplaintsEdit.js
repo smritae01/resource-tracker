@@ -293,7 +293,7 @@ class ComplaintsEdit extends Component {
           {this.props.listExam &&
             this.props.listExam.map((item, i) => {
               return (
-                <Link to={"/exams/" + item._id} key={item._id}>
+                <Link to={"/requests/" + item._id} key={item._id}>
                   {item._id}
                 </Link>
               );

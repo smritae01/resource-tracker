@@ -17,14 +17,17 @@ const generatedModel = {
       * exam
       */
     const examSchema = new mongoose.Schema({
-      place: {
+      req_no: {
         type: "String"
       },
-      score: {
-        type: "Number"
+      date: {
+        type: "Date"
       },
-      valid: {
-        type: "Boolean"
+      desc: {
+        type: "String"
+      },
+      status: {
+        type: "String"
       },
       // RELATIONS
       _course: {
@@ -39,8 +42,8 @@ const generatedModel = {
         type: Schema.ObjectId,
         ref: "teacher"
       },
-      
-      
+
+
       // EXTERNAL RELATIONS
       /*
       */
@@ -66,7 +69,7 @@ const generatedModel = {
   },
 
   // Start queries
-    
+
 
   // CRUD METHODS
 
@@ -80,7 +83,7 @@ const generatedModel = {
     const obj = new generatedModel.model(item);
     return await obj.save();
   },
-  
+
   /**
   * examModel.delete
   *   @description CRUD ACTION delete
@@ -90,7 +93,7 @@ const generatedModel = {
   async delete(id) {
     return await generatedModel.model.findByIdAndRemove(id);
   },
-  
+
   /**
   * examModel.findBy_course
   *   @description CRUD ACTION findBy_course
@@ -100,7 +103,7 @@ const generatedModel = {
   async findBy_course(key) {
     return await generatedModel.model.find({ '_course' : key});
   },
-  
+
   /**
   * examModel.findBy_student
   *   @description CRUD ACTION findBy_student
@@ -110,7 +113,7 @@ const generatedModel = {
   async findBy_student(key) {
     return await generatedModel.model.find({ '_student' : key});
   },
-  
+
   /**
   * examModel.findBy_teacher
   *   @description CRUD ACTION findBy_teacher
@@ -120,7 +123,7 @@ const generatedModel = {
   async findBy_teacher(key) {
     return await generatedModel.model.find({ '_teacher' : key});
   },
-  
+
   /**
   * examModel.get
   *   @description CRUD ACTION get
@@ -130,7 +133,7 @@ const generatedModel = {
   async get(id) {
     return await generatedModel.model.findOne({ _id : id });
   },
-  
+
   /**
   * examModel.list
   *   @description CRUD ACTION list
@@ -139,17 +142,17 @@ const generatedModel = {
   async list() {
     return await generatedModel.model.find();
   },
-  
+
   /**
   * examModel.update
   *   @description CRUD ACTION update
   *   @param ObjectId id Id
   *
   */
-  async update(item) { 
+  async update(item) {
     return await generatedModel.model.findOneAndUpdate({ _id: item._id }, item, {'new': true});
   },
-    
+
 
 
 };

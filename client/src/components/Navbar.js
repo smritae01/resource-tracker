@@ -86,45 +86,63 @@ class Navbar extends React.Component {
       <div className={classes.list}>
         <div className="navbar-drawer-header">
 
-          <div className="navbar-drawer-text">Quick Links</div>
+          <div className="navbar-drawer-text">SITEMAP</div>
         </div>
         <Divider />
-        <List>
-          {/* START LINK MENU */}
-
+        {SecurityService.hasRole("ADMIN") ?
+        (<List>
            <Link to="/courses">
             <ListItem button key="course">
               <ListItemIcon>
                 <ArrowForwardIos />
               </ListItemIcon>
-              <ListItemText className="menu-text" primary="course" />
+              <ListItemText className="menu-text" primary="Manage Inventory" />
             </ListItem>
           </Link>{" "}
-           <Link to="/exams">
+           <Link to="/requests">
             <ListItem button key="exam">
               <ListItemIcon>
                 <ArrowForwardIos />
               </ListItemIcon>
-              <ListItemText className="menu-text" primary="exam" />
+              <ListItemText className="menu-text" primary="Check Requests" />
             </ListItem>
           </Link>{" "}
-           <Link to="/students">
+           <Link to="/complaints">
             <ListItem button key="student">
               <ListItemIcon>
                 <ArrowForwardIos />
               </ListItemIcon>
-              <ListItemText className="menu-text" primary="student" />
+              <ListItemText className="menu-text" primary="Check Complaint" />
             </ListItem>
           </Link>{" "}
-           <Link to="/teachers">
-            <ListItem button key="teacher">
+        </List> ):
+
+        (<List>
+          <Link to="/courses">
+            <ListItem button key="course">
               <ListItemIcon>
                 <ArrowForwardIos />
               </ListItemIcon>
-              <ListItemText className="menu-text" primary="teacher" />
+              <ListItemText className="menu-text" primary="Inventory" />
             </ListItem>
-          </Link>{" "} {/* END LINK MENU */}
-        </List>
+          </Link>{" "}
+          <Link to="/requests">
+            <ListItem button key="exam">
+              <ListItemIcon>
+                <ArrowForwardIos />
+              </ListItemIcon>
+              <ListItemText className="menu-text" primary="Make Request" />
+            </ListItem>
+          </Link>{" "}
+          <Link to="/students">
+            <ListItem button key="student">
+              <ListItemIcon>
+                <ArrowForwardIos />
+              </ListItemIcon>
+              <ListItemText className="menu-text" primary="Raise a Complaint" />
+            </ListItem>
+          </Link>{" "}
+        </List>)}
       </div>
     );
 
@@ -159,9 +177,17 @@ class Navbar extends React.Component {
               </div>
             )}
             <Typography variant="h6" color="inherit" className={classes.grow}>
+            {SecurityService.hasRole("ADMIN") ? (
+              <div>
               <Link to="/home" className="white">
                 DASHBOARD
               </Link>
+              </div>
+              ) :
+              <div>
+              <Link to="/user/dashboard" className="white">
+                DASHBOARD
+              </Link></div>}
             </Typography>
             {this.props.user && (
               <div>

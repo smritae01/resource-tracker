@@ -8,10 +8,7 @@ const initialState = {
 
 // Reducer
 export default function examEditReducer(state = initialState, action) {
-  switch (action.type) { 
-    
-    // Insert here your custom reducers
-
+  switch (action.type) {
 
     // START REDUCERS
     case types.CREATE_EXAM_SUCCESS:
@@ -29,7 +26,7 @@ export default function examEditReducer(state = initialState, action) {
     case types.VALIDATE_EXAM_SUCCESS:
       return { ...state, validate: action.payload };
      // END REDUCERS
-    
+
     default:
       return state;
   }

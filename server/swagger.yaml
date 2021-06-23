@@ -75,7 +75,7 @@ paths:
       responses:
         '200':
           description: OK
-                
+
 
   #-----  User  -----
   /user/{id}/changePassword:
@@ -86,7 +86,7 @@ paths:
       responses:
         "200":
           description: OK
-    
+
   /user/:
     post:
       summary: CRUD ACTION create
@@ -131,7 +131,7 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/User"
-    
+
   /user/{id}:
     delete:
       summary: CRUD ACTION delete
@@ -189,7 +189,7 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/User"
-    
+
   #-----  course  -----
   /course/:
     post:
@@ -225,7 +225,7 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/course"
-    
+
   /course/{id}:
     delete:
       summary: CRUD ACTION delete
@@ -283,7 +283,7 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/course"
-    
+
   #-----  exam  -----
   /exam/:
     post:
@@ -304,12 +304,14 @@ paths:
             schema:
               type: object
               properties:
-                place:
+                req_no:
                   type: string
-                score:
-                  type: number
-                valid:
-                  type: boolean
+                date:
+                  type: date
+                desc:
+                  type: string
+                desc: status
+                  type: string
     get:
       summary: CRUD ACTION list
       tags:
@@ -323,7 +325,7 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/exam"
-    
+
   /exam/{id}:
     delete:
       summary: CRUD ACTION delete
@@ -381,7 +383,7 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/exam"
-    
+
   /exam/findBy_course/{key}:
     get:
       summary: CRUD ACTION findBy_course
@@ -403,7 +405,7 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/exam"
-    
+
   /exam/findBy_student/{key}:
     get:
       summary: CRUD ACTION findBy_student
@@ -425,7 +427,7 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/exam"
-    
+
   /exam/findBy_teacher/{key}:
     get:
       summary: CRUD ACTION findBy_teacher
@@ -447,7 +449,7 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/exam"
-    
+
   /exam/{id}/validate:
     post:
       summary: this api is used to validate exam
@@ -464,7 +466,7 @@ paths:
       responses:
         "200":
           description: OK
-    
+
   #-----  student  -----
   /student/:
     post:
@@ -504,7 +506,7 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/student"
-    
+
   /student/{id}:
     delete:
       summary: CRUD ACTION delete
@@ -562,7 +564,7 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/student"
-    
+
   /student/findBy_courses/{key}:
     get:
       summary: CRUD ACTION findBy_courses
@@ -584,7 +586,7 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/student"
-    
+
   #-----  teacher  -----
   /teacher/:
     post:
@@ -622,7 +624,7 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/teacher"
-    
+
   /teacher/{id}:
     delete:
       summary: CRUD ACTION delete
@@ -680,7 +682,7 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/teacher"
-    
+
   /teacher/findBy_courses/{key}:
     get:
       summary: CRUD ACTION findBy_courses
@@ -702,8 +704,8 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/teacher"
-    
-    
+
+
   #-----  User  -----
   /Users/{id}/changePassword:
     post:
@@ -786,15 +788,15 @@ paths:
               properties:
                 username:
                   type: 'string'
-                password: 
+                password:
                   type: 'string'
-                mail: 
+                mail:
                   type: 'string'
-                name: 
+                name:
                   type: 'string'
-                surname: 
+                surname:
                   type: 'string'
-                roles: 
+                roles:
                   type: array
                   items:
                     type: string
@@ -805,12 +807,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/User"
-    
+
 # JWT security
 security:
-  - bearerAuth: [] 
-  
-  
+  - bearerAuth: []
+
+
 # Components
 components:
 
@@ -827,22 +829,22 @@ components:
       properties:
         username:
           type: 'string'
-        password: 
+        password:
           type: 'string'
-        mail: 
+        mail:
           type: 'string'
-        name: 
+        name:
           type: 'string'
-        surname: 
+        surname:
           type: 'string'
-        roles: 
+        roles:
           type: array
           items:
             type: string
       required:
         - username
         - password
-        
+
 
     User:
       properties:
@@ -864,8 +866,8 @@ components:
         -  _id
         - password
         - username
-      
-    
+
+
     course:
       properties:
         _id:
@@ -875,22 +877,24 @@ components:
       required:
         -  _id
         - name
-      
-    
+
+
     exam:
       properties:
         _id:
           type: string
-        place:
+        req_no:
           type: string
-        score:
-          type: number
-        valid:
-          type: boolean
+        date:
+          type: date
+        desc:
+          type: string
+        status:
+          type: string
       required:
         -  _id
-      
-    
+
+
     student:
       properties:
         _id:
@@ -906,8 +910,8 @@ components:
         - DOB
         - lastname
         - name
-      
-    
+
+
     teacher:
       properties:
         _id:
@@ -920,5 +924,5 @@ components:
         -  _id
         - lastname
         - name
-      
-    
+
+

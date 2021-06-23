@@ -1,165 +1,165 @@
-// Dependencies
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import DialogDelete from "../components/DialogDelete";
+// // Dependencies
+// import React, { Component } from "react";
+// import { Link } from "react-router-dom";
+// import DialogDelete from "../components/DialogDelete";
 
-// Redux
-import PropTypes from "prop-types";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
+// // Redux
+// import PropTypes from "prop-types";
+// import { bindActionCreators } from "redux";
+// import { connect } from "react-redux";
 
-// Material UI
-import Button from "@material-ui/core/Button";
-// import Table from "@material-ui/core/Table";
-// import TableBody from "@material-ui/core/TableBody";
-// import TableCell from "@material-ui/core/TableCell";
-// import TableHead from "@material-ui/core/TableHead";
-// import TableRow from "@material-ui/core/TableRow";
+// // Material UI
+// import Button from "@material-ui/core/Button";
+// // import Table from "@material-ui/core/Table";
+// // import TableBody from "@material-ui/core/TableBody";
+// // import TableCell from "@material-ui/core/TableCell";
+// // import TableHead from "@material-ui/core/TableHead";
+// // import TableRow from "@material-ui/core/TableRow";
 
-// Table
-import EnhancedTable from "../components/EnhancedTable";
+// // Table
+// import EnhancedTable from "../components/EnhancedTable";
 
-// Custom Actions
-
-
-// START IMPORT ACTIONS
-import TeacherActions from "../redux/actions/generated/TeacherActionsGenerated";
-
-// END IMPORT ACTIONS
-
-/** APIs
-
-* actionsTeacher.delete
-*	@description CRUD ACTION delete
-*	@param ObjectId id - Id
-*
-* actionsTeacher.list
-*	@description CRUD ACTION list
-*
-
-**/
+// // Custom Actions
 
 
-class TeacherList extends Component {
-  // Init component
-  constructor(props) {
-    super(props);
-    this.state = {
-      openDialogDelete: false
-    };
-  }
+// // START IMPORT ACTIONS
+// import TeacherActions from "../redux/actions/generated/TeacherActionsGenerated";
 
-  // Load data on start
-  componentWillMount() {
-    this.props.actionsTeacher.loadTeacherList();
-  }
+// // END IMPORT ACTIONS
 
-  // Delete data
-  delete(id) {
-    this.setState({ openDialogDelete: true, idDelete: id });
-  }
+// /** APIs
 
-  closeDialogDelete() {
-    this.setState({ openDialogDelete: false, idDelete: null });
-  }
+// * actionsTeacher.delete
+// *	@description CRUD ACTION delete
+// *	@param ObjectId id - Id
+// *
+// * actionsTeacher.list
+// *	@description CRUD ACTION list
+// *
 
-  confirmDialogDelete(id) {
-    this.props.actionsTeacher.deleteTeacher(this.state.idDelete).then(data => {
-      this.props.actionsTeacher.loadTeacherList();
-      this.setState({ openDialogDelete: false, idDelete: null });
-    });
-  }
+// **/
 
-  // Show content
-  render() {
-    const columns = [
-      {
-        id: "item",
-        type: "string",
-        label: "Item"
-      },
-      {
-        id: "staus",
-        type: "string",
-        label: "Status"
-      },
-    ];
-    const link = "/teachers/";
 
-    return (
-      <div>
-        <h1>Status</h1>
+// class TeacherList extends Component {
+//   // Init component
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       openDialogDelete: false
+//     };
+//   }
 
-        <EnhancedTable
-          data={this.props.list}
-          columns={columns}
-          link={link}
-          onDelete={this.delete.bind(this)}
-        />
+//   // Load data on start
+//   componentWillMount() {
+//     this.props.actionsTeacher.loadTeacherList();
+//   }
 
-        <DialogDelete
-          open={this.state.openDialogDelete}
-          onClose={this.closeDialogDelete.bind(this)}
-          onConfirm={this.confirmDialogDelete.bind(this)}
-        />
+//   // Delete data
+//   delete(id) {
+//     this.setState({ openDialogDelete: true, idDelete: id });
+//   }
 
-        {/*
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell align="right">Lastname</TableCell>
-              <TableCell align="right">Name</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {this.props.list.map(row => (
-              <TableRow key={row._id}>
-                <TableCell component="th" scope="row">
-                  <Link to={"/teachers/" + row._id} key={row._id}>
-                    {row._id}
-                  </Link>
-                </TableCell>
-                <TableCell align="right">{ row.lastname }</TableCell>
-                <TableCell align="right">{ row.name }</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-        */}
+//   closeDialogDelete() {
+//     this.setState({ openDialogDelete: false, idDelete: null });
+//   }
 
-        <div className="footer-card">
-          <Link to="/teachers/new">
-            <Button variant="contained" color="primary">
-              Search Status
-            </Button>
-          </Link>
-        </div>
-      </div>
-    );
-  }
-}
+//   confirmDialogDelete(id) {
+//     this.props.actionsTeacher.deleteTeacher(this.state.idDelete).then(data => {
+//       this.props.actionsTeacher.loadTeacherList();
+//       this.setState({ openDialogDelete: false, idDelete: null });
+//     });
+//   }
 
-// Store actions
-const mapDispatchToProps = function(dispatch) {
-  return {
-    actionsTeacher: bindActionCreators(TeacherActions, dispatch),
-  };
-};
+//   // Show content
+//   render() {
+//     const columns = [
+//       {
+//         id: "item",
+//         type: "string",
+//         label: "Item"
+//       },
+//       {
+//         id: "staus",
+//         type: "string",
+//         label: "Status"
+//       },
+//     ];
+//     const link = "/teachers/";
 
-// Validate types
-TeacherList.propTypes = {
-  actionsTeacher: PropTypes.object.isRequired,
-};
+//     return (
+//       <div>
+//         <h1>Status</h1>
 
-// Get props from state
-function mapStateToProps(state, ownProps) {
-  return {
-    list: state.TeacherListReducer.listTeacher
-  };
-}
+//         <EnhancedTable
+//           data={this.props.list}
+//           columns={columns}
+//           link={link}
+//           onDelete={this.delete.bind(this)}
+//         />
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TeacherList);
+//         <DialogDelete
+//           open={this.state.openDialogDelete}
+//           onClose={this.closeDialogDelete.bind(this)}
+//           onConfirm={this.confirmDialogDelete.bind(this)}
+//         />
+
+//         {/*
+//         <Table>
+//           <TableHead>
+//             <TableRow>
+//               <TableCell>ID</TableCell>
+//               <TableCell align="right">Lastname</TableCell>
+//               <TableCell align="right">Name</TableCell>
+//             </TableRow>
+//           </TableHead>
+//           <TableBody>
+//             {this.props.list.map(row => (
+//               <TableRow key={row._id}>
+//                 <TableCell component="th" scope="row">
+//                   <Link to={"/teachers/" + row._id} key={row._id}>
+//                     {row._id}
+//                   </Link>
+//                 </TableCell>
+//                 <TableCell align="right">{ row.lastname }</TableCell>
+//                 <TableCell align="right">{ row.name }</TableCell>
+//               </TableRow>
+//             ))}
+//           </TableBody>
+//         </Table>
+//         */}
+
+//         <div className="footer-card">
+//           <Link to="/teachers/new">
+//             <Button variant="contained" color="primary">
+//               Search Status
+//             </Button>
+//           </Link>
+//         </div>
+//       </div>
+//     );
+//   }
+// }
+
+// // Store actions
+// const mapDispatchToProps = function(dispatch) {
+//   return {
+//     actionsTeacher: bindActionCreators(TeacherActions, dispatch),
+//   };
+// };
+
+// // Validate types
+// TeacherList.propTypes = {
+//   actionsTeacher: PropTypes.object.isRequired,
+// };
+
+// // Get props from state
+// function mapStateToProps(state, ownProps) {
+//   return {
+//     list: state.TeacherListReducer.listTeacher
+//   };
+// }
+
+// export default connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(TeacherList);

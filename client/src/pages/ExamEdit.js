@@ -58,11 +58,11 @@ class ExamEdit extends Component {
     event.preventDefault();
     if (this.state.exam._id) {
       this.props.actionsExam.saveExam(this.state.exam).then(data => {
-        this.props.history.push("/exams/");
+        this.props.history.push("/requests/");
       });
     } else {
       this.props.actionsExam.createExam(this.state.exam).then(data => {
-        this.props.history.push("/exams/");
+        this.props.history.push("/requests/");
       });
     }
   }
@@ -76,9 +76,18 @@ class ExamEdit extends Component {
 
 
           <TextField
+            id="req_no"
+            label="Request Number"
+            value={this.state.exam.req_no || ""}
+            onChange={Utils.handleChange.bind(this, "exam")}
+            margin="normal"
+            fullWidth
+          />
+
+          <TextField
             id="desc"
             label="Describe the request"
-            value={this.state.exam.place || ""}
+            value={this.state.exam.desc || ""}
             onChange={Utils.handleChange.bind(this, "exam")}
             margin="normal"
             fullWidth
@@ -87,26 +96,13 @@ class ExamEdit extends Component {
 
           <TextField
             id="date"
-            label="Date"
-            value={this.state.exam.score || ""}
+            value={this.state.exam.date || ""}
             onChange={Utils.handleChange.bind(this, "exam")}
-            type="number"
+            type="date"
             margin="normal"
             fullWidth
           />
 
-          {/* <FormControlLabel
-            control={
-              <Switch
-                id="valid"
-                checked={this.state.exam.valid || false}
-                onChange={Utils.handleChangeCheck.bind(this, "exam", "valid")}
-                color="primary"
-              />
-            }
-            label="valid"
-            className="mt-20"
-          /> */}
 
           {/* RELATIONS */}
 {/*
@@ -114,14 +110,14 @@ class ExamEdit extends Component {
 
           {/* Relation 1:m _course with course */}
           <FormControl fullWidth className="mb-20">
-            <InputLabel shrink htmlFor="_course"> Select Item </InputLabel>
+            <InputLabel> Select Item </InputLabel>
             <Select
               value={this.state.exam._course || ""}
               onChange={Utils.handleChangeSelect.bind(this, "exam")}
-              inputProps={{
-                id: "_course",
-                name: "_course"
-              }}
+              // inputProps={{
+              //   id: "_course",
+              //   name: "_course"
+              // }}
               fullWidth
             >
               <MenuItem value="">
@@ -136,63 +132,9 @@ class ExamEdit extends Component {
           </FormControl>
 
 
-          {/* Relation 1:m _student with student */}
-
-          {/* <FormControl fullWidth className="mb-20">
-            <InputLabel shrink htmlFor="_student">
-              _student
-            </InputLabel>
-            <Select
-              value={this.state.exam._student || ""}
-              onChange={Utils.handleChangeSelect.bind(this, "exam")}
-              inputProps={{
-                id: "_student",
-                name: "_student"
-              }}
-              fullWidth
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              {this.props.listStudent && this.props.listStudent.map(row => (
-                <MenuItem value={row._id} key={row._id}>
-                  {row._id}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl> */}
-
-
-          {/* Relation 1:m _teacher with teacher */}
-{/*
-          <FormControl fullWidth className="mb-20">
-            <InputLabel shrink htmlFor="_teacher">
-              _teacher
-            </InputLabel>
-            <Select
-              value={this.state.exam._teacher || ""}
-              onChange={Utils.handleChangeSelect.bind(this, "exam")}
-              inputProps={{
-                id: "_teacher",
-                name: "_teacher"
-              }}
-              fullWidth
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              {this.props.listTeacher && this.props.listTeacher.map(row => (
-                <MenuItem value={row._id} key={row._id}>
-                  {row._id}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl> */}
-
-
           {/* Footer */}
           <div className="footer-card">
-            <Link to="/exams/">Back to list</Link>
+            <Link to="/requests/">Back to list</Link>
 
             <Button type="submit" variant="contained" color="primary">
               Save

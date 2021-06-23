@@ -135,13 +135,13 @@ class ComplaintsList extends Component {
         </Table>
         */}
 
-        <div className="footer-card">
+        {/* <div className="footer-card">
           <Link to="/complaints/new">
             <Button variant="contained" color="primary">
               Search
             </Button>
           </Link>
-        </div>
+        </div> */}
       </div>
     );
   }

@@ -1,5 +1,5 @@
 
- 
+
 // Dependencies
 import axios from "axios";
 import { properties } from "../../config/properties";

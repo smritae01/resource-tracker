@@ -70,7 +70,11 @@ class Login extends Component {
 
           // Set header
           SecurityService.setAuthorization();
+          if (SecurityService.hasRole('ADMIN')){
           comp.props.history.push("/home");
+          }
+          else {
+          comp.props.history.push("/user/dashboard");}
         } else {
           comp.setState({ showError: true });
         }
@@ -114,15 +118,6 @@ class Login extends Component {
               onChange={Utils.handleChange.bind(this, "login")}
             />
           </FormControl>
-
-          {/* OPTIONS TO LOGIN AS ADMIN OR USER
-          <FormControl margin="normal" required fullWidth>
-            <InputLabel htmlFor="loginas">Login as</InputLabel>
-            <RadioGroup aria-label="loginfo" name="loginfo" value={this.state.login.loginfo || ""} onChange={Utils.handleChange.bind(this, "login")}>
-            <FormControlLabel value="user" control={<Radio />} label="User" />
-            <FormControlLabel value="admin" control={<Radio />} label="Admin" />
-            </RadioGroup>
-            </FormControl> */}
 
           <FormControlLabel
             control={

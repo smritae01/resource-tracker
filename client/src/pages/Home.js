@@ -27,16 +27,11 @@ class Home extends Component {
           <Link to="/complaints">Check Complaints</Link>
         </div>
         <div>
-          <Link to="/teachers">Check Status</Link>
-        </div>
-        <div>
           <Link to="/courses">Inventory</Link>
         </div>
         <div>
-          <Link to="/exams">Requests</Link>
+          <Link to="/requests">Manage Requests</Link>
         </div>
-
-
       </div>
     );
   }
